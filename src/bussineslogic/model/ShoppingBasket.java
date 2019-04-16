@@ -24,7 +24,33 @@ public class ShoppingBasket {
         }
         return totalPrice;
     }
+    
+    public void addProductToShoppingBasket(Product product){
+        for (Product p : productMap.keySet()) {
+            if (p.equals(product)) {
+                productMap.put(p, productMap.get(p) + 1);
+            } else {
+                productMap.put(product, 1);
+            }
+        }
+    }
 
+    public String removeProductFromShoppingBasket(Product product){
+        String message = "";
+        for (Product p : productMap.keySet()) {
+            if (p.equals(product)) {
+                if (productMap.get(p) > 1) {
+                    productMap.put(p, productMap.get(p) - 1);
+                    message = p.getName() + " ilość " + productMap.get(p);
+                } else {
+                    productMap.remove(p);
+                    message = "Usunięto: " + p.getName() + " z koszyka";
+                }
+            }
+        }
+        return message;
+    }
+    
     @Override
     public String toString() {
         return "ShoppingBasket{" +

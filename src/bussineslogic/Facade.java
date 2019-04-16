@@ -19,14 +19,13 @@ public class Facade {
         String[] productTable = new String[]{"Koszulka biała","139.99","T_SHIRTS","MAN","M","Levis"};
         String[] clientTable = new String[]{"1", "Jan", "Kowalski", "Wroclaw1", "732456987", "jan@wp.pl"};
 
-        Product product = facade.addProduct(productTable);
-        System.out.println(product.toString());
+        facade.addProduct(productTable);
         
         Client client = facade.addClient(clientTable);
+        System.out.println(client.getEmail());
 
-
-        facade.addProductToBasket(client,product);
-        facade.addProductToBasket(client,product);
+        System.out.println(facade.addProductToBasket(clientTable,productTable));
+        System.out.println(facade.addProductToBasket(clientTable,productTable));
 
     }
     
@@ -80,26 +79,31 @@ public class Facade {
         return null;
     }
 
-    public Map<Product,Integer> addProductToBasket(Client client, Product product) {
-
+    public String addProductToBasket(String[] clientTable, String[] productTable) {
+        Factory factory = new Factory();
+        Client client = factory.createClient(clientTable);
         if (searchClient(client) != null) {
+            Product product = factory.createProduct(productTable);
             if (searchProduct(product) != null) {
                 client.addToShoppingBasket(product);
-                return client.getShoppingBasket().getProductMap();
+                return "Dodano" + product.getName();
             }
+            return "Nie istnieje taki produkt";
         }
-        return null;
+        return "Nie istnieje taki klient";
     }
 
-    public Map<Product,Integer> removeFromBasket(Client client, Product product) {
-
+    public String removeFromBasket(String[] clientTable, String[] productTable) {
+        Factory factory = new Factory();
+        Client client = factory.createClient(clientTable);
         if (searchClient(client) != null) {
+            Product product = factory.createProduct(productTable);
             if (searchProduct(product) != null) {
-                client.removeFromShoppingBasket(product);
-                return client.getShoppingBasket().getProductMap();
+                return client.removeFromShoppingBasket(product);
             }
+            return "Nie istnieje taki klient";
         }
-        return null;
+        return "Nie usunięto produktu z koszyka klienta";
     }
 
     public Client searchClient(Client client) {
