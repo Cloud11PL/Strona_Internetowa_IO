@@ -54,8 +54,21 @@ public class ShoppingBasket {
     @Override
     public String toString() {
         return "ShoppingBasket{" +
-                "productMap=" + productMap +
-                ", totalPrice=" + totalPrice +
+                "Product Map=" + productMap +
+                ", Total Price=" + totalPrice +
                 '}';
+    }
+    
+    public String browseBasket(String[] filters){
+        
+        Map<Product, Integer>  filteredBasket=productMap;
+        for(Product p : productMap.keySet()){
+            if(p.isValid(filters) != null){
+                filteredBasket.put(p, productMap.get(p));
+            }
+        }
+        
+        return "ShoppingBasket{" +
+                "productMap=" + filteredBasket +"}";
     }
 }

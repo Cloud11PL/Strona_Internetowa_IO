@@ -88,6 +88,17 @@ public class Product {
     public void setBrand(String brand) {
         this.brand = brand;
     }
+    
+    public Product isValid(String[] filters){
+        if((price>=Double.parseDouble(filters[0]) || filters[0].equals("")) && 
+                (price<=Double.parseDouble(filters[1])|| filters[1].equals("")) && 
+                (category.toString().equals(filters[2])|| filters[2].equals(""))&&
+                (gender.toString().equals(filters[3])|| filters[3].equals("")) &&
+                (size.equals(filters[4])|| filters[4].equals("")) &&
+                (brand.equals(filters[5])|| filters[5].equals(""))) return this;
+        
+        else return null;
+    }
 
     @Override
     public String toString() {

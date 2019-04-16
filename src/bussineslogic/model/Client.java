@@ -1,5 +1,6 @@
 package bussineslogic.model;
 import java.util.Map;
+import java.util.Objects;
 
 public class Client {
 
@@ -83,11 +84,31 @@ public class Client {
     public void setShoppingBasket(ShoppingBasket shoppingBasket) {
         this.shoppingBasket = shoppingBasket;
     }
+    
+    public String browseShoppingBasket(String[] filters){
+        return shoppingBasket.browseBasket(filters);
+    }
 
     @Override
     public String toString() {
-        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+        return "Client{" + "Shopping Basket=" + shoppingBasket.toString() + ", Id=" + id + ", First Name=" + firstName + ", Last Name=" + lastName + ", Adress=" + adress + ", Phone=" + phone + ", Email=" + email + '}';
     }
     
-    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Client other = (Client) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
 }
