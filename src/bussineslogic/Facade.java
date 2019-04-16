@@ -5,6 +5,7 @@ import bussineslogic.model.Client;
 import bussineslogic.model.Gender;
 import bussineslogic.model.Product;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -22,12 +23,15 @@ public class Facade {
         Product product = facade.addProduct(productTable);
         System.out.println(product.toString());
         
-        Client client = facade.addClient(clientTable);
-
-
-        facade.addProductToBasket(client,product);
-        facade.addProductToBasket(client,product);
-
+        String client = facade.addClient(clientTable);
+        System.out.println(client);
+        client = facade.addClient(clientTable);
+        System.out.println(client);
+        System.out.println(Arrays.toString(facade.clientList.toArray()));
+        
+        String[] filters=new String[]{"120", "150", "T_SHIRTS", "MAN", "M", "Levis"};
+        String basket=facade.browseBasket(clientTable, filters);
+        System.out.println(basket);
     }
     
     public ArrayList<String> publicProductsModel() {
@@ -69,13 +73,13 @@ public class Facade {
         return null;
     }
 
-    public Client addClient(String[] clientTable){
+    public String addClient(String[] clientTable){
         Factory factory = new Factory();
         Client client = factory.createClient(clientTable);
 
         if (searchClient(client) == null) { 
             clientList.add(client); 
-        return client; 
+        return client.toString(); 
         }
         return null;
     }
@@ -122,57 +126,16 @@ public class Facade {
         return null;
     }
     
-    public String browseBasket(Client client, String [] filters){
+    public String browseBasket(String[] clientTable, String [] filters){
+        Factory factory = new Factory();
+        Client client, clientExist;
+        client= factory.createClient(clientTable);
 
-        Map<Product, Integer> products=client.getShoppingBasket().getProductMap();
-        Map<Product, Integer> helpList=client.getShoppingBasket().getProductMap();
-        
-       if(!filters[0].equals("")){
-            for (Product p : products.keySet()){
-            if(p.getPrice()!=Double.parseDouble(filters[0])){
-                helpList.remove(p);
-            }
-        } 
-                   products=helpList;
-       }
-
-       if (!filters[1].equals("")){
-        for (Product p : products.keySet()){
-            if(!p.getCategory().toString().equals(Category.valueOf(filters[1]))){
-                helpList.remove(p);
-            }
-        } 
-               products=helpList;
-    } 
-
-       if(!filters[2].equals("")){
-         for (Product p : products.keySet()){
-            if(!p.getGender().toString().equals(Gender.valueOf(filters[2]))){
-                helpList.remove(p);
-            }
-        } 
-                products=helpList;
-    }
-
-       if(!filters[3].equals("")){
-         for (Product p : products.keySet()){
-            if(!p.getSize().equals(filters[3])){
-                helpList.remove(p);
-            }
-        } 
-                products=helpList;
-    }
-
-       if(!filters[4].equals("")){
-         for (Product p : products.keySet()){
-            if(!p.getBrand().equals(filters[4])){
-                helpList.remove(p);
-            }
-        } 
-                 products=helpList;
-    }
-
-        return products.toString();
+        if ((clientExist = searchClient(client)) != null) { 
+        return clientExist.browseShoppingBasket(filters); 
+        }
+        return null;
+       
         
     }
     
