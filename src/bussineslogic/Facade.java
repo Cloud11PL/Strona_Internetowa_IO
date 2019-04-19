@@ -37,7 +37,7 @@ public class Facade {
         System.out.println(facade.clientList.get(0));
 
         
-        String[] filters=new String[]{"120", "150", "T_SHIRTS", "MAN", "M", "Levis"};
+        String[] filters=new String[]{"120", "110", "", "", "", "HM"};
         String basket=facade.browseBasket(clientTable, filters);
         System.out.println(basket);
         

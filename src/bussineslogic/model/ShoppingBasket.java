@@ -64,9 +64,10 @@ public class ShoppingBasket {
 
     public String browseBasket(String[] filters) {
 
-        Map<Product, Integer> filteredBasket = productMap;
+        Map<Product, Integer> filteredBasket = new HashMap<>();
         for (Product p : productMap.keySet()) {
             if (p.isValid(filters) != null) {
+                System.out.println(p.getName());
                 filteredBasket.put(p, productMap.get(p));
             }
         }
