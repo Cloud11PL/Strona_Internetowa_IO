@@ -20,7 +20,7 @@ public class Facade {
         String[] productTable = new String[]{"Koszulka biała","139.99","T_SHIRTS","MAN","M","Levis"};
         String[] clientTable = new String[]{"1", "Jan", "Kowalski", "Wroclaw1", "732456987", "jan@wp.pl"};
 
-        Product product = facade.addProduct(productTable);
+        String product = facade.addProduct(productTable);
         System.out.println(product.toString());
         
         String client = facade.addClient(clientTable);
@@ -44,30 +44,30 @@ public class Facade {
         return products;
     }
     
-    public void removeProduct(Product product) {
-        Product productExist;
-        
-        if((productExist = searchProduct(product)) != null){
-            productList.remove(productExist);
+    public String removeProduct(Product product) {    
+        if(productList.remove(product)){
+            return "Produkt usunieto";
         }
+        return "Brak takiego produktu";
     }
     
-    public void modifyProductPrice(double price, Product product) {
-        Product productExist;
-        
+    public void modifyProductPrice(double price, String[] productTable) {
+        Product productExist, product;
+        Factory factory = new Factory();
+        product = factory.createProduct(productTable);
         if((productExist = searchProduct(product)) != null) {
             productExist.setPrice(price);
         }
     }
 
-    public Product addProduct(String[] productTable){
+    public String addProduct(String[] productTable){
         Product product1, productExist;
         Factory factory = new Factory();
         product1 = factory.createProduct(productTable);
         
         if ((productExist = searchProduct(product1)) == null) {
             productList.add(product1);
-            return product1;
+            return product1.toString();
         }
 
         return null;
@@ -138,10 +138,5 @@ public class Facade {
        
         
     }
-    
- 
-    
-  
-    
 
 }
