@@ -91,19 +91,26 @@ public class Product {
     }
     
     public Product isValid(String[] filters){
-        if((price>=Double.parseDouble(filters[0]) || filters[0].equals("")) && 
-                (price<=Double.parseDouble(filters[1])|| filters[1].equals("")) && 
+        if(filters[0].equals("")) filters[0]="0";
+        if(filters[1].equals("")) filters[1]=String.valueOf(Double.MAX_VALUE);
+        try{
+        if((price>=Double.parseDouble(filters[0])) && 
+                (price<=Double.parseDouble(filters[1])) && 
                 (category.toString().equals(filters[2])|| filters[2].equals(""))&&
                 (gender.toString().equals(filters[3])|| filters[3].equals("")) &&
                 (size.equals(filters[4])|| filters[4].equals("")) &&
-                (brand.equals(filters[5])|| filters[5].equals(""))) return this;
+                (brand.equals(filters[5])|| filters[5].equals(""))) {
+            return this;}
         
-        else return null;
+        else return null;}
+        catch(NumberFormatException ex){
+            System.out.println("Niepoprawna cena!");}
+        return null;
     }
 
     @Override
     public String toString() {
-        return "\nProduct{" +
+        return "Product{" +
                 "name='" + name + '\'' +
                 ", price=" + price +
                 ", category=" + category +
@@ -123,7 +130,5 @@ public class Product {
         hash = 43 * hash + Objects.hashCode(this.size);
         hash = 43 * hash + Objects.hashCode(this.brand);
         return hash;
-    }
-    
-    
+}
 }
