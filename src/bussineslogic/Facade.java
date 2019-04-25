@@ -66,14 +66,15 @@ public class Facade {
     }
 
     public void modifyProductPrice(double price, String[] productTable) {
+        
         Product productExist, product;
         Factory factory = new Factory();
         product = factory.createProduct(productTable);
-        if((productExist = searchProduct(product)) != null) {
-
-            productExist.setPrice(price);
+            if ((productExist = searchProduct(product)) != null) {
+                    productExist.setPrice(price);
+            }
         }
-    }
+
 
     public String addProduct(String[] productTable){
 
@@ -118,12 +119,10 @@ public class Facade {
         Client client = factory.createClient(clientTable);
         if ((client = searchClient(client)) != null) {
             Product product = factory.createProduct(productTable);
-            if ((product = (searchProduct(product))) != null) {
-                return client.removeFromShoppingBasket(product);
+             return client.removeFromShoppingBasket(product);
             }
             return "Nie istnieje taki klient";
-        }
-        return "Nie usunięto produktu z koszyka klienta";
+     
     }
 
     public Client searchClient(Client client) {

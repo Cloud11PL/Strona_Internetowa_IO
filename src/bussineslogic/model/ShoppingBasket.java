@@ -25,31 +25,32 @@ public class ShoppingBasket {
     }
 
     public void addProductToShoppingBasket(Product product) {
-        if (!productMap.keySet().isEmpty()) {
-            for (Product p : productMap.keySet()) {
-                if (p.equals(product)) {
-                    productMap.put(p, productMap.get(p) + 1);
-                } else {
-                    productMap.put(product, 1);
-                }
-            }
+        int amount=1;
+        Integer amountObject = productMap.get(product);      
+        if (amountObject !=null) {
+            amount = amountObject;
+                productMap.put(product,++amount);
         }else{
-            productMap.put(product, 1);
+                productMap.put(product, 1);
         }
-    }
+         totalPrice += product.getPrice();
+        }
+    
 
     public String removeProductFromShoppingBasket(Product product) {
         String message = "Brak takiego produktu w koszyku";
-        for (Product p : productMap.keySet()) {
-            if (p.equals(product)) {
-                if (productMap.get(p) > 1) {
-                    productMap.put(p, productMap.get(p) - 1);
-                    message = p.getName() + " ilość " + productMap.get(p);
+        Integer amountObject = productMap.get(product);
+                    
+            if (amountObject !=null) {
+                int amount = amountObject;
+                if (amount > 1) {
+                    productMap.put(product, --amount);
+                    message = product.getName() + " ilość: " + amount;
                 } else {
-                    productMap.remove(p);
-                    message = "Usunięto: " + p.getName() + " z koszyka";
+                    productMap.remove(product);
+                    message = "Usunięto: " + product.getName() + " z koszyka";
                 }
-            }
+                totalPrice=product.getPrice();
         }
         return message;
     }
