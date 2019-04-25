@@ -69,35 +69,12 @@ public class Client {
         this.email = email;
     }
 
- 
-
     public void addToShoppingBasket(Product product) {
-
-        Map<Product, Integer> productMap = shoppingBasket.getProductMap();
-
-        for (Product p : productMap.keySet()) {
-            if (p.equals(product)) {
-                productMap.put(p, productMap.get(p) + 1);
-            } else {
-                productMap.put(product, 1);
-            }
-        }
+        shoppingBasket.addProductToShoppingBasket(product);        
     }
 
-
-    public void removeFromShoppingBasket(Product product) {
-
-        Map<Product, Integer> productMap = shoppingBasket.getProductMap();
-
-        for (Product p : productMap.keySet()) {
-            if (p.equals(product)) {
-                if (productMap.get(p) > 1) {
-                    productMap.put(p, productMap.get(p) - 1);
-                } else {
-                    productMap.remove(p);
-                }
-            }
-        }
+    public String removeFromShoppingBasket(Product product) {
+         return shoppingBasket.removeProductFromShoppingBasket(product);
     }
 
     public ShoppingBasket getShoppingBasket() {

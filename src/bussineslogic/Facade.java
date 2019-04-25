@@ -30,9 +30,10 @@ public class Facade {
         System.out.println(client);
         System.out.println(Arrays.toString(facade.clientList.toArray()));
 
+
         String product = facade.addProduct(productTable);
         System.out.println(product);
-        
+
         System.out.println(facade.addProductToBasket(clientTable, productTable2));
         System.out.println(facade.removeFromBasket(clientTable, productTable2));
         System.out.println(facade.addProductToBasket(clientTable, productTable));
@@ -56,10 +57,11 @@ public class Facade {
         return products;
     }
 
+
     public String removeProduct(Product product) {
        if(productList.remove(product)){
             return "Produkt usunieto";
-        }
+       }
         return "Brak takiego produktu";
     }
 
@@ -68,15 +70,17 @@ public class Facade {
         Factory factory = new Factory();
         product = factory.createProduct(productTable);
         if((productExist = searchProduct(product)) != null) {
+
             productExist.setPrice(price);
         }
     }
 
     public String addProduct(String[] productTable){
+
         Product product1, productExist;
         Factory factory = new Factory();
         product1 = factory.createProduct(productTable);
-        
+
         if ((productExist = searchProduct(product1)) == null) {
             productList.add(product1);
             return product1.toString();
