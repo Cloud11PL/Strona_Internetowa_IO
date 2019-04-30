@@ -91,23 +91,37 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" + "Shopping Basket=" + shoppingBasket.toString() + ", Id=" + id + ", First Name=" + firstName + ", Last Name=" + lastName + ", Adress=" + adress + ", Phone=" + phone + ", Email=" + email + '}';
+        return "Client{" + "shoppingBasket=" + shoppingBasket + ", id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", adress=" + adress + ", phone=" + phone + ", email=" + email + '}';
     }
     
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
-            return true;
+            return true;    
         }
         if (obj == null) {
-            return false;
+            return false;  
         }
         if (getClass() != obj.getClass()) {
-            return false;
+            return false;  
         }
         final Client other = (Client) obj;
         if (!Objects.equals(this.id, other.id)) {
-            return false;
+            return false;  
+        }
+        if (!Objects.equals(this.firstName, other.firstName)){
+            return false;  
+        }
+        if (!Objects.equals(this.lastName, other.lastName)) {
+            return false;   
+        }
+        if (!Objects.equals(this.adress, other.adress)) {
+            return false;  }
+        if (!Objects.equals(this.phone, other.phone)) {
+            return false;  
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;   
         }
         return true;
     }
