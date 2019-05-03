@@ -30,6 +30,10 @@ public class Facade {
         System.out.println(client);
         System.out.println(Arrays.toString(facade.clientList.toArray()));
 
+
+        String product = facade.addProduct(productTable);
+        System.out.println(product);
+
         System.out.println(facade.addProductToBasket(clientTable, productTable2));
         System.out.println(facade.removeFromBasket(clientTable, productTable2));
         System.out.println(facade.addProductToBasket(clientTable, productTable));
@@ -53,34 +57,37 @@ public class Facade {
         return products;
     }
 
-    public void removeProduct(Product product) {
-        Product productExist;
 
-        if ((productExist = searchProduct(product)) != null) {
-            productList.remove(productExist);
-        }
+    public String removeProduct(Product product) {
+       if(productList.remove(product)){
+            return "Produkt usunieto";
+       }
+        return "Brak takiego produktu";
     }
 
-    public void modifyProductPrice(double price, Product product) {
-        Product productExist;
-
-        if ((productExist = searchProduct(product)) != null) {
-            productExist.setPrice(price);
+    public void modifyProductPrice(double price, String[] productTable) {
+        
+        Product productExist, product;
+        Factory factory = new Factory();
+        product = factory.createProduct(productTable);
+            if ((productExist = searchProduct(product)) != null) {
+                    productExist.setPrice(price);
+            }
         }
-    }
 
-    public Product addProduct(String[] productTable) {
+
+    public String addProduct(String[] productTable){
+
         Product product1, productExist;
         Factory factory = new Factory();
         product1 = factory.createProduct(productTable);
 
         if ((productExist = searchProduct(product1)) == null) {
             productList.add(product1);
-            return product1;
+            return product1.toString();
         }
-
         return null;
-    }
+}
 
     public String addClient(String[] clientTable) {
         Factory factory = new Factory();
@@ -112,12 +119,10 @@ public class Facade {
         Client client = factory.createClient(clientTable);
         if ((client = searchClient(client)) != null) {
             Product product = factory.createProduct(productTable);
-            if ((product = (searchProduct(product))) != null) {
-                return client.removeFromShoppingBasket(product);
+             return client.removeFromShoppingBasket(product);
             }
             return "Nie istnieje taki klient";
-        }
-        return "Nie usunięto produktu z koszyka klienta";
+     
     }
 
     public Client searchClient(Client client) {

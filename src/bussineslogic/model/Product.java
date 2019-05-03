@@ -1,5 +1,6 @@
 package bussineslogic.model;
 import bussineslogic.model.Category;
+import java.util.Objects;
 
 public class Product {
 
@@ -118,4 +119,16 @@ public class Product {
                 ", brand='" + brand + '\'' +
                 '}';
     }
+    
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 43 * hash + Objects.hashCode(this.name);
+        hash = 43 * hash + (int) (Double.doubleToLongBits(this.price) ^ (Double.doubleToLongBits(this.price) >>> 32));
+        hash = 43 * hash + Objects.hashCode(this.category);
+        hash = 43 * hash + Objects.hashCode(this.gender);
+        hash = 43 * hash + Objects.hashCode(this.size);
+        hash = 43 * hash + Objects.hashCode(this.brand);
+        return hash;
+}
 }
