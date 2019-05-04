@@ -50,7 +50,7 @@ public class ShoppingBasket {
                     productMap.remove(product);
                     message = "Usunięto: " + product.getName() + " z koszyka";
                 }
-                totalPrice=product.getPrice();
+                totalPrice-=product.getPrice();
         }
         return message;
     }
@@ -68,8 +68,7 @@ public class ShoppingBasket {
         Map<Product, Integer> filteredBasket = new HashMap<>();
         for (Product p : productMap.keySet()) {
             if (p.isValid(filters) != null) {
-                System.out.println(p.getName());
-                filteredBasket.put(p, productMap.get(p));
+             filteredBasket.put(p, productMap.get(p));
             }
         }
 

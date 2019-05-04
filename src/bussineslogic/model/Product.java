@@ -93,19 +93,12 @@ public class Product {
     public Product isValid(String[] filters){
         if(filters[0].equals("")) filters[0]="0";
         if(filters[1].equals("")) filters[1]=String.valueOf(Double.MAX_VALUE);
-        try{
-        if((price>=Double.parseDouble(filters[0])) && 
-                (price<=Double.parseDouble(filters[1])) && 
-                (category.toString().equals(filters[2])|| filters[2].equals(""))&&
-                (gender.toString().equals(filters[3])|| filters[3].equals("")) &&
-                (size.equals(filters[4])|| filters[4].equals("")) &&
-                (brand.equals(filters[5])|| filters[5].equals(""))) {
-            return this;}
-        
-        else return null;}
-        catch(NumberFormatException ex){
-            System.out.println("Niepoprawna cena!");}
-        return null;
+        if((price>=Double.parseDouble(filters[0])) && (price<=Double.parseDouble(filters[1])) &&
+                (category.toString().equals(filters[2])|| filters[2].equals(""))&&(gender.toString().equals(filters[3])||
+                filters[3].equals("")) &&(size.equals(filters[4])|| filters[4].equals("")) &&(brand.equals(filters[5])|| 
+                filters[5].equals(""))) {return this;
+        }else 
+            return null;
     }
 
     @Override
