@@ -14,7 +14,7 @@ public class Facade {
 
     private ArrayList<Product> productList = new ArrayList<>();
     private ArrayList<Client> clientList = new ArrayList<>();
-
+ 
     public static void main(String[] args) {
         Facade facade = new Facade();
         String[] productTable = new String[]{"Koszulka biała", "139.99", "T_SHIRTS", "MAN", "M", "Levis"};
@@ -41,11 +41,12 @@ public class Facade {
         System.out.println(facade.clientList.get(0));
 
         
-        String[] filters=new String[]{"120", "110", "", "", "", "HM"};
+        String[] filters=new String[]{"", "", "T_SHIRTS", "", "", ""};
         String basket=facade.browseBasket(clientTable, filters);
         System.out.println(basket);
         
     }
+
 
     public ArrayList<String> publicProductsModel() {
         ArrayList<String> products = new ArrayList<>();
@@ -155,6 +156,22 @@ public class Facade {
         }
         return null;
 
+    }
+    
+        public ArrayList<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(ArrayList<Product> productList) {
+        this.productList = productList;
+    }
+
+    public ArrayList<Client> getClientList() {
+        return clientList;
+    }
+
+    public void setClientList(ArrayList<Client> clientList) {
+        this.clientList = clientList;
     }
 
 }

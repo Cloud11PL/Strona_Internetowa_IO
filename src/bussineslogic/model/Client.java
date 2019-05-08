@@ -91,7 +91,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" + "shoppingBasket=" + shoppingBasket + ", id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", adress=" + adress + ", phone=" + phone + ", email=" + email + '}';
+        return firstName + " " + lastName + " " + email;
     }
     
     @Override

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="site.HomeController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="650.0" prefWidth="900.0" spacing="10.0">
+         <children>
+            <Button fx:id="btnAddClient" mnemonicParsing="false" onAction="#btnAddClientClicked" prefHeight="34.0" prefWidth="348.0" text="Dodaj klienta">
+               <font>
+                  <Font name="Corbel" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnBrowseBasket" mnemonicParsing="false" onAction="#btnBrowseBasketClicked" prefHeight="34.0" prefWidth="348.0" text="Przeszukaj koszyk">
+               <font>
+                  <Font name="Corbel" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnModifyBasket" mnemonicParsing="false" onAction="#btnModifyBasketPressed" prefHeight="34.0" prefWidth="348.0" text="Modyfikuj koszyk">
+               <font>
+                  <Font name="Corbel" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnAddProduct" mnemonicParsing="false" onAction="#btnAddProductClicked" prefHeight="34.0" prefWidth="348.0" text="Dodaj produkt">
+               <font>
+                  <Font name="Corbel" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRemoveProduct" mnemonicParsing="false" onAction="#btnRemoveProductClicked" prefHeight="34.0" prefWidth="348.0" text="Usuń produkt">
+               <font>
+                  <Font name="Corbel" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnChangePrice" mnemonicParsing="false" onAction="#btnChangePriceClicked" prefHeight="34.0" prefWidth="348.0" text="Zmień cenę produktu">
+               <font>
+                  <Font name="Corbel" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</Pane>

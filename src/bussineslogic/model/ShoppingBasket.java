@@ -8,6 +8,7 @@ public class ShoppingBasket {
 
     private Map<Product, Integer> productMap = new HashMap<>();
     private double totalPrice = 0;
+    private Map<Product, Integer> filteredMap = new HashMap<>();
 
     public Map<Product, Integer> getProductMap() {
         return productMap;
@@ -50,7 +51,7 @@ public class ShoppingBasket {
                     productMap.remove(product);
                     message = "Usunięto: " + product.getName() + " z koszyka";
                 }
-                totalPrice=product.getPrice();
+                totalPrice-=product.getPrice();
         }
         return message;
     }
@@ -65,15 +66,22 @@ public class ShoppingBasket {
 
     public String browseBasket(String[] filters) {
 
-        Map<Product, Integer> filteredBasket = new HashMap<>();
         for (Product p : productMap.keySet()) {
             if (p.isValid(filters) != null) {
-                System.out.println(p.getName());
-                filteredBasket.put(p, productMap.get(p));
+             filteredMap.put(p, productMap.get(p));
+            }
+            else{
+                filteredMap.clear();
             }
         }
 
         return "ShoppingBasket{"
-                + "productMap=" + filteredBasket + "}";
+                + "productMap=" + filteredMap + "}";
     }
+
+    public Map<Product, Integer> getFilteredMap() {
+        return filteredMap;
+    }
+    
+    
 }

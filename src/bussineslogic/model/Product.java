@@ -23,25 +23,6 @@ public class Product {
     public Product() {
     }
 
-
-    @Override
-    public boolean equals(Object obj) {
-        boolean result = false;
-        if (getName().equals(((Product)obj).getName())){
-            if (getPrice() == ((Product)obj).getPrice()){
-                if (getGender().equals(((Product)obj).getGender())){
-                    if (getSize().equals(((Product)obj).getSize())){
-                        if (getBrand().equals(((Product)obj).getBrand())){
-                            result = true;
-                        }
-                    }
-                }
-            }
-        }
-
-        return result;
-    }
-
     public String getName() {
         return name;
     }
@@ -89,37 +70,24 @@ public class Product {
     public void setBrand(String brand) {
         this.brand = brand;
     }
-    
-    public Product isValid(String[] filters){
-        if(filters[0].equals("")) filters[0]="0";
-        if(filters[1].equals("")) filters[1]=String.valueOf(Double.MAX_VALUE);
-        try{
-        if((price>=Double.parseDouble(filters[0])) && 
-                (price<=Double.parseDouble(filters[1])) && 
-                (category.toString().equals(filters[2])|| filters[2].equals(""))&&
-                (gender.toString().equals(filters[3])|| filters[3].equals("")) &&
-                (size.equals(filters[4])|| filters[4].equals("")) &&
-                (brand.equals(filters[5])|| filters[5].equals(""))) {
-            return this;}
-        
-        else return null;}
-        catch(NumberFormatException ex){
-            System.out.println("Niepoprawna cena!");}
-        return null;
+
+    public Product isValid(String[] filters) {
+        if (filters[0].equals("")) {
+            filters[0] = "0";
+        }
+        if (filters[1].equals("")) {
+            filters[1] = String.valueOf(Double.MAX_VALUE);
+        }
+        if ((price >= Double.parseDouble(filters[0])) && (price <= Double.parseDouble(filters[1]))
+                && (category.toString().equals(filters[2]) || filters[2].equals("")) && (gender.toString().equals(filters[3])
+                || filters[3].equals("")) && (size.equals(filters[4]) || filters[4].equals("")) && (brand.equals(filters[5])
+                || filters[5].equals("")) && (name.equals(filters[6]) || filters[6].equals("")))  {
+            return this;
+        } else {
+            return null;
+        }
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                ", category=" + category +
-                ", gender=" + gender +
-                ", size='" + size + '\'' +
-                ", brand='" + brand + '\'' +
-                '}';
-    }
-    
     @Override
     public int hashCode() {
         int hash = 5;
@@ -130,5 +98,48 @@ public class Product {
         hash = 43 * hash + Objects.hashCode(this.size);
         hash = 43 * hash + Objects.hashCode(this.brand);
         return hash;
-}
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Product other = (Product) obj;
+        if (Double.doubleToLongBits(this.price) != Double.doubleToLongBits(other.price)) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.size, other.size)) {
+            return false;
+        }
+        if (!Objects.equals(this.brand, other.brand)) {
+            return false;
+        }
+        if (this.gender != other.gender) {
+            return false;
+        }
+        return true;
+    }    
+
+    @Override
+    public String toString() {
+        return "Product{"
+                + "name='" + name + '\''
+                + ", price=" + price
+                + ", category=" + category
+                + ", gender=" + gender
+                + ", size='" + size + '\''
+                + ", brand='" + brand + '\''
+                + '}';
+    }
+
 }
