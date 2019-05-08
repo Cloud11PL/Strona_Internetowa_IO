@@ -66,3 +66,8 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+Strona_Internetowa_client/Strona_internetowa_client/build/
+Strona_Internetowa_client/Strona_internetowa_client/nbproject/private/
+Strona_Internetowa_client/Strona_internetowa_client/nbproject/nbproject/Makefile-*.mk
+Strona_Internetowa_client/Strona_internetowa_client/nbproject/Package-*.bash
