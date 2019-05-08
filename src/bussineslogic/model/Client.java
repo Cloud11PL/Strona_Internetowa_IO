@@ -90,7 +90,9 @@ public class Client {
     }
 
     @Override
-    public String toString() {return "\nClient{" + ", Id=" + id + ", First Name=" + firstName + ", Last Name=" + lastName + ", Adress=" + adress + ", Phone=" + phone + ", Email=" + email +"\nShoppingBasket=" + shoppingBasket.toString()+'}'; }
+    public String toString() {
+        return firstName + " " + lastName + " " + email;
+    }
     
     @Override
     public boolean equals(Object obj) {

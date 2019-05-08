@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="site.ModifyBasketController">
+   <children>
+      <Button fx:id="btnAddToBasket" layoutX="86.0" layoutY="560.0" mnemonicParsing="false" onAction="#btnAddToBasketClicked" prefHeight="34.0" prefWidth="348.0" text="Dodaj do koszyka">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font></Button>
+      <Button fx:id="btnGoBack" layoutX="294.0" layoutY="602.0" mnemonicParsing="false" onAction="#btnGoBackClicked" prefHeight="34.0" prefWidth="348.0" text="Powrót">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tblBasket" layoutX="107.0" layoutY="80.0" prefHeight="394.0" prefWidth="722.0">
+        <columns>
+          <TableColumn fx:id="clmName" prefWidth="146.4000473022461" text="Nazwa" />
+          <TableColumn fx:id="clmPrice" prefWidth="87.99993896484375" text="Cena" />
+            <TableColumn fx:id="clmCategory" prefWidth="110.4000244140625" text="Kategoria" />
+            <TableColumn fx:id="clmGender" prefWidth="109.60000610351562" text="Płeć" />
+            <TableColumn fx:id="clmSize" prefWidth="107.20001220703125" text="Rozmiar" />
+            <TableColumn fx:id="clmBrand" prefWidth="167.20001220703125" text="Marka" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="cboxClient" layoutX="350.0" layoutY="46.0" prefWidth="200.0" />
+      <Label layoutX="392.0" layoutY="14.0" text="Wybierz klienta">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnRemoveFromBasket" layoutX="476.0" layoutY="560.0" mnemonicParsing="false" onAction="#btnRemoveFromBasketClicked" prefHeight="34.0" prefWidth="348.0" text="Usuń z koszyka">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="152.0" layoutY="496.0" text="Wybierz produkt do dodania:">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="510.0" layoutY="524.0" text="Wybierz z tabeli produkt do usunięcia:">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnShow" layoutX="570.0" layoutY="43.0" mnemonicParsing="false" onAction="#btnShowClicked" text="Pokaż koszyk">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Button>
+      <ChoiceBox fx:id="cboxAddProduct" layoutX="86.0" layoutY="522.0" prefHeight="25.0" prefWidth="348.0" />
+   </children>
+</Pane>
