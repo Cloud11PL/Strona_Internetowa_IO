@@ -86,7 +86,7 @@ public class ChangePriceController implements Initializable {
     @FXML
     void btnGoBackClicked(ActionEvent event) throws IOException {
         Stage stageTheEventSourceNodeBelongs = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/Home.fxml"));
         stageTheEventSourceNodeBelongs.setScene(new Scene((Parent) loader.load()));
     }
     @Override

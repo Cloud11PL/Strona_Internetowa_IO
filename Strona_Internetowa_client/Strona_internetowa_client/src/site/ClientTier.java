@@ -25,7 +25,7 @@ private static Facade facade = new Facade();
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/res/Home.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

@@ -51,42 +51,42 @@ public class HomeController {
     @FXML
     void btnAddClientClicked(ActionEvent event) throws IOException {
         Stage stageTheEventSourceNodeBelongs = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddClient.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/AddClient.fxml"));
         stageTheEventSourceNodeBelongs.setScene(new Scene((Parent) loader.load()));
     }
 
     @FXML
     void btnAddProductClicked(ActionEvent event) throws IOException {
         Stage stageTheEventSourceNodeBelongs = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddProduct.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/AddProduct.fxml"));
         stageTheEventSourceNodeBelongs.setScene(new Scene((Parent) loader.load()));
     }
 
     @FXML
     void btnBrowseBasketClicked(ActionEvent event) throws IOException {
         Stage stageTheEventSourceNodeBelongs = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("BrowseBasket.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/BrowseBasket.fxml"));
         stageTheEventSourceNodeBelongs.setScene(new Scene((Parent) loader.load()));
     }
 
     @FXML
     void btnChangePriceClicked(ActionEvent event) throws IOException {
         Stage stageTheEventSourceNodeBelongs = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ChangePrice.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/ChangePrice.fxml"));
         stageTheEventSourceNodeBelongs.setScene(new Scene((Parent) loader.load()));
     }
 
     @FXML
     void btnModifyBasketPressed(ActionEvent event) throws IOException {
         Stage stageTheEventSourceNodeBelongs = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifyBasket.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/ModifyBasket.fxml"));
         stageTheEventSourceNodeBelongs.setScene(new Scene((Parent) loader.load()));
     }
 
     @FXML
     void btnRemoveProductClicked(ActionEvent event) throws IOException {
         Stage stageTheEventSourceNodeBelongs = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("RemoveProduct.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/RemoveProduct.fxml"));
         stageTheEventSourceNodeBelongs.setScene(new Scene((Parent) loader.load()));
     }
 
