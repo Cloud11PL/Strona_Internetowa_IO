@@ -23,8 +23,17 @@ public class Product_dto implements Serializable{
     public Product_dto() {
         
     }
+
+    public Product_dto(String name, double price, Category_dto category, Gender_dto gender, String size, String brand) {
+        this.name = name;
+        this.price = price;
+        this.category = category;
+        this.gender = gender;
+        this.size = size;
+        this.brand = brand;
+    }
     
-    //Jeszcze jedne konstruktor????
+    
     
     public String getName() {
         return name;
@@ -74,5 +83,15 @@ public class Product_dto implements Serializable{
         this.brand = brand;
     }
     
-    
+    @Override
+    public String toString() {
+        return "Product{"
+                + "name='" + name + '\''
+                + ", price=" + price
+                + ", category=" + category
+                + ", gender=" + gender
+                + ", size='" + size + '\''
+                + ", brand='" + brand + '\''
+                + '}';
+    }
 }

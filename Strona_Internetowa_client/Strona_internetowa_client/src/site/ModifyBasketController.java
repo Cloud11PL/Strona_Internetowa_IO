@@ -9,10 +9,12 @@
  */
 package site;
 
-import bussineslogic.model.Category;
-import bussineslogic.model.Client;
-import bussineslogic.model.Gender;
-import bussineslogic.model.Product;
+
+import client_tier.Client;
+import bussineslogic.dto.Category_dto;
+import bussineslogic.dto.Client_dto;
+import bussineslogic.dto.Gender_dto;
+import bussineslogic.dto.Product_dto;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -41,7 +43,7 @@ import javafx.stage.Stage;
 
 public class ModifyBasketController implements Initializable {
 
-    private Client client;
+    private Client_dto client;
 
     @FXML
     private Pane pane;
@@ -53,34 +55,34 @@ public class ModifyBasketController implements Initializable {
     private Button btnGoBack;
 
     @FXML
-    private ChoiceBox<Product> cboxAddProduct;
+    private ChoiceBox<Product_dto> cboxAddProduct;
 
     @FXML
     private Button btnRemoveFromBasket;
 
     @FXML
-    private TableColumn<Product, String> clmName;
+    private TableColumn<Product_dto, String> clmName;
 
     @FXML
-    private TableColumn<Product, Double> clmPrice;
+    private TableColumn<Product_dto, Double> clmPrice;
 
     @FXML
-    private TableColumn<Product, Category> clmCategory;
+    private TableColumn<Product_dto, Category_dto> clmCategory;
 
     @FXML
-    private TableColumn<Product, Gender> clmGender;
+    private TableColumn<Product_dto, Gender_dto> clmGender;
 
     @FXML
-    private TableColumn<Product, String> clmSize;
+    private TableColumn<Product_dto, String> clmSize;
 
     @FXML
-    private TableColumn<Product, String> clmBrand;
+    private TableColumn<Product_dto, String> clmBrand;
 
     @FXML
-    private ComboBox<Client> cboxClient;
+    private ComboBox<Client_dto> cboxClient;
 
     @FXML
-    private TableView<Product> tblBasket;
+    private TableView<Product_dto> tblBasket;
 
     @FXML
     void btnAddToBasketClicked(ActionEvent event) {
@@ -90,7 +92,8 @@ public class ModifyBasketController implements Initializable {
             if (productData == null || clientData == null) {
                 return;
             }
-            ClientTier.getFacade().addProductToBasket(clientData, productData);
+            Client.getFacade().addProductToBasket(clientData, productData);
+            getClient();
             refresh_table();
             Alert alert = new Alert(AlertType.INFORMATION, "Dodano produkt do koszyka");
             alert.showAndWait();
@@ -105,7 +108,8 @@ public class ModifyBasketController implements Initializable {
             if (productData == null || clientData == null) {
                 return;
             }
-            ClientTier.getFacade().removeFromBasket(clientData, productData);
+            Client.getFacade().removeFromBasket(clientData, productData);
+            getClient();
             refresh_table();
             Alert alert = new Alert(AlertType.INFORMATION, "Usunięto produkt z koszyka");
             alert.showAndWait();
@@ -123,24 +127,24 @@ public class ModifyBasketController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<Client> options = FXCollections.observableArrayList(ClientTier.getFacade().getClientList());
+        ObservableList<Client_dto> options = FXCollections.observableArrayList(Client.getFacade().getClients());
         cboxClient.getItems().setAll(options);
         
-        ObservableList<Product> options2 = FXCollections.observableArrayList(ClientTier.getFacade().getProductList());
+        ObservableList<Product_dto> options2 = FXCollections.observableArrayList(Client.getFacade().getProducts());
         cboxAddProduct.setItems(options2);
         
-        clmName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
-        clmPrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("price"));
-        clmCategory.setCellValueFactory(new PropertyValueFactory<Product, Category>("category"));
-        clmGender.setCellValueFactory(new PropertyValueFactory<Product, Gender>("gender"));
-        clmSize.setCellValueFactory(new PropertyValueFactory<Product, String>("size"));
-        clmBrand.setCellValueFactory(new PropertyValueFactory<Product, String>("brand"));
+        clmName.setCellValueFactory(new PropertyValueFactory<Product_dto, String>("name"));
+        clmPrice.setCellValueFactory(new PropertyValueFactory<Product_dto, Double>("price"));
+        clmCategory.setCellValueFactory(new PropertyValueFactory<Product_dto, Category_dto>("category"));
+        clmGender.setCellValueFactory(new PropertyValueFactory<Product_dto, Gender_dto>("gender"));
+        clmSize.setCellValueFactory(new PropertyValueFactory<Product_dto, String>("size"));
+        clmBrand.setCellValueFactory(new PropertyValueFactory<Product_dto, String>("brand"));
         tblBasket.getColumns().clear();
         tblBasket.getColumns().addAll(clmName, clmPrice, clmCategory, clmGender, clmSize, clmBrand);
         
-        cboxClient.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Client>() {
+        cboxClient.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Client_dto>() {
             @Override
-            public void changed(ObservableValue<? extends Client> ov, Client t, Client t1) {
+            public void changed(ObservableValue<? extends Client_dto> ov, Client_dto t, Client_dto t1) {
                 tblBasket.getItems().clear();
             }
         });
@@ -165,19 +169,15 @@ public class ModifyBasketController implements Initializable {
     }
 
     public void refresh_table() {
-        ObservableList<Product> data = FXCollections.observableArrayList(make_productlist());
+        ObservableList<Product_dto> data = FXCollections.observableArrayList(make_productlist(getClient()));
         tblBasket.setItems(data);
     }
 
-    public ArrayList<Product> make_productlist() {
-        ArrayList<Product> productList = new ArrayList<>();
-        for (Product p : client.getShoppingBasket().getProductMap().keySet()) {
-            productList.add(p);
-        }
-        return productList;
+    public ArrayList<Product_dto> make_productlist(String [] clientTable) {
+        return Client.getFacade().getBasket(clientTable);
     }
 
-    private String[] getProduct(Product product) {
+    private String[] getProduct(Product_dto product) {
         if (product != null) {
             String[] productTable = new String[]{product.getName(), String.valueOf(product.getPrice()), product.getCategory().name(), product.getGender().name(), product.getSize(), product.getBrand()};
             return productTable;

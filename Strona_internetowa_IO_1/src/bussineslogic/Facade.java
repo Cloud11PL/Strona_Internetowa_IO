@@ -1,14 +1,16 @@
 package bussineslogic;
 
+import bussineslogic.dto.Category_dto;
+import bussineslogic.dto.Client_dto;
+import bussineslogic.dto.Gender_dto;
+import bussineslogic.dto.Product_dto;
 import bussineslogic.model.Category;
 import bussineslogic.model.Client;
 import bussineslogic.model.Gender;
 import bussineslogic.model.Product;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 public class Facade {
 
@@ -41,9 +43,10 @@ public class Facade {
         System.out.println(facade.clientList.get(0));
 
         
-        String[] filters=new String[]{"", "", "T_SHIRTS", "", "", ""};
+        String[] filters=new String[]{"", "", "T_SHIRTS", "", "", "",""};
         String basket=facade.browseBasket(clientTable, filters);
         System.out.println(basket);
+        System.out.println(facade.getFilteredBasket(clientTable, filters));
         
     }
 
@@ -57,7 +60,13 @@ public class Facade {
         }
         return products;
     }
-
+    public void removeProduct_dto(Product_dto product_dto) {
+        Category cat=Category.values()[product_dto.getCategory().ordinal()];
+        Gender gen=Gender.values()[product_dto.getGender().ordinal()];
+        Product product=new Product(product_dto.getName(),product_dto.getPrice(),cat,gen,product_dto.getSize(),product_dto.getBrand());
+        removeProduct(product);
+        
+    }
 
     public String removeProduct(Product product) {
        if(productList.remove(product)){
@@ -75,7 +84,24 @@ public class Facade {
                     productExist.setPrice(price);
             }
         }
+    
+        public ArrayList<Product_dto> getBasket(String []clientTable){
+        ArrayList<Product_dto> products=new ArrayList<>();
+        Factory factory=new Factory();
+        Client client, clientExist;
+        client = factory.createClient(clientTable);
 
+        if ((clientExist = searchClient(client)) != null) {
+        for (Product p : clientExist.getShoppingBasket().getProductMap().keySet()) {
+                Category_dto cat=Category_dto.values()[p.getCategory().ordinal()];
+                Gender_dto gen=Gender_dto.values()[p.getGender().ordinal()];
+                Product_dto product=new Product_dto(p.getName(),p.getPrice(),cat,gen,p.getSize(),p.getBrand());
+            products.add(product);
+        }
+        return products;
+        }
+        return null;
+    }
 
     public String addProduct(String[] productTable){
 
@@ -161,6 +187,16 @@ public class Facade {
         public ArrayList<Product> getProductList() {
         return productList;
     }
+        public ArrayList<Product_dto> getProducts(){
+            ArrayList<Product_dto> products=new ArrayList<>();
+            for(Product p: productList){
+                Category_dto cat=Category_dto.values()[p.getCategory().ordinal()];
+                Gender_dto gen=Gender_dto.values()[p.getGender().ordinal()];
+                Product_dto product=new Product_dto(p.getName(),p.getPrice(),cat,gen,p.getSize(),p.getBrand());
+                products.add(product);
+            }
+            return products;
+        }
 
     public void setProductList(ArrayList<Product> productList) {
         this.productList = productList;
@@ -169,9 +205,35 @@ public class Facade {
     public ArrayList<Client> getClientList() {
         return clientList;
     }
-
+    public ArrayList<Client_dto> getClients(){
+            ArrayList<Client_dto> clients=new ArrayList<>();
+            for(Client c: clientList){
+                Client_dto product=new Client_dto(c.getShoppingBasket(),c.getId(),c.getFirstName(),c.getLastName(),c.getAdress(),c.getPhone(),c.getEmail());
+                clients.add(product);
+            }
+            return clients;
+        }
     public void setClientList(ArrayList<Client> clientList) {
         this.clientList = clientList;
+    }
+
+    public ArrayList<Product_dto> getFilteredBasket(String[] clientTable,String [] filters) {
+        ArrayList<Product_dto> products=new ArrayList<>();
+        Factory factory=new Factory();
+        Client client, clientExist;
+        client = factory.createClient(clientTable);
+        String s=browseBasket(clientTable, filters);
+
+        if ((clientExist = searchClient(client)) != null) {
+        for (Product p : clientExist.getShoppingBasket().getFilteredMap().keySet()) {
+                Category_dto cat=Category_dto.values()[p.getCategory().ordinal()];
+                Gender_dto gen=Gender_dto.values()[p.getGender().ordinal()];
+                Product_dto product=new Product_dto(p.getName(),p.getPrice(),cat,gen,p.getSize(),p.getBrand());
+                products.add(product);
+        }
+        return products;
+        }
+        return null;
     }
 
 }

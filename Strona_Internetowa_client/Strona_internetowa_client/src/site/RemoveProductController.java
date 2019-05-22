@@ -11,9 +11,10 @@ package site;
  * @author Juju
  */
 
-import bussineslogic.model.Category;
-import bussineslogic.model.Gender;
-import bussineslogic.model.Product;
+import client_tier.Client;
+import bussineslogic.dto.Category_dto;
+import bussineslogic.dto.Gender_dto;
+import bussineslogic.dto.Product_dto;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -47,25 +48,25 @@ public class RemoveProductController implements Initializable{
     private Button btnGoBack;
 
     @FXML
-    private TableColumn<Product, String> clmName;
+    private TableColumn<Product_dto, String> clmName;
 
     @FXML
-    private TableColumn<Product, Double>clmPrice;
+    private TableColumn<Product_dto, Double>clmPrice;
 
     @FXML
-    private TableColumn<Product, Category> clmCategory;
+    private TableColumn<Product_dto, Category_dto> clmCategory;
 
     @FXML
-    private TableColumn<Product, Gender> clmGender;
+    private TableColumn<Product_dto, Gender_dto> clmGender;
 
     @FXML
-    private TableColumn<Product, String> clmSize;
+    private TableColumn<Product_dto, String> clmSize;
 
     @FXML
-    private TableColumn<Product, String> clmBrand;
+    private TableColumn<Product_dto, String> clmBrand;
     
     @FXML
-    private TableView<Product> tblProducts;
+    private TableView<Product_dto> tblProducts;
 
     @FXML
     void btnGoBackClicked(ActionEvent event) throws IOException {
@@ -76,9 +77,9 @@ public class RemoveProductController implements Initializable{
 
     @FXML
     void btnRemoveProductClicked(ActionEvent event) {
-        Product product=content_validate();
+        Product_dto product=content_validate();
         if(product!=null){
-            ClientTier.getFacade().removeProduct(product);
+            Client.getFacade().removeProduct_dto(product);
             refresh_table();
             Alert alert = new Alert(AlertType.INFORMATION, "Produkt został poprawnie usunięty");
             alert.showAndWait();
@@ -87,12 +88,12 @@ public class RemoveProductController implements Initializable{
     
        @Override
     public void initialize(URL url, ResourceBundle rb) {
-        clmName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
-        clmPrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("price"));
-        clmCategory.setCellValueFactory(new PropertyValueFactory<Product, Category>("category"));
-        clmGender.setCellValueFactory(new PropertyValueFactory<Product, Gender>("gender"));
-        clmSize.setCellValueFactory(new PropertyValueFactory<Product, String>("size"));
-        clmBrand.setCellValueFactory(new PropertyValueFactory<Product, String>("brand"));
+        clmName.setCellValueFactory(new PropertyValueFactory<Product_dto, String>("name"));
+        clmPrice.setCellValueFactory(new PropertyValueFactory<Product_dto, Double>("price"));
+        clmCategory.setCellValueFactory(new PropertyValueFactory<Product_dto, Category_dto>("category"));
+        clmGender.setCellValueFactory(new PropertyValueFactory<Product_dto, Gender_dto>("gender"));
+        clmSize.setCellValueFactory(new PropertyValueFactory<Product_dto, String>("size"));
+        clmBrand.setCellValueFactory(new PropertyValueFactory<Product_dto, String>("brand"));
         tblProducts.getColumns().clear();
         tblProducts.getColumns().addAll(clmName,clmPrice,clmCategory,clmGender,clmSize,clmBrand);
         refresh_table();
@@ -100,12 +101,12 @@ public class RemoveProductController implements Initializable{
     
     public void refresh_table(){
         tblProducts.getItems().removeAll(tblProducts.getItems());
-        ObservableList<Product> data = FXCollections.observableArrayList(ClientTier.getFacade().getProductList());
+        ObservableList<Product_dto> data = FXCollections.observableArrayList(Client.getFacade().getProducts());
         tblProducts.setItems(data);
     }
     
-    public Product content_validate() {
-        Product item=tblProducts.getSelectionModel().getSelectedItem();
+    public Product_dto content_validate() {
+        Product_dto item=tblProducts.getSelectionModel().getSelectedItem();
         if( item !=null){
             return item ;
         }else{

@@ -5,14 +5,17 @@
  */
 package bussineslogic.dto;
 
+import bussineslogic.model.Product;
+import bussineslogic.model.ShoppingBasket;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
  * @author Juju
  */
 public class Client_dto implements Serializable{
-    protected ShoppingBasket_dto shoppingBasket = new ShoppingBasket_dto();
+    protected ShoppingBasket shoppingBasket;
     protected String id;
     protected String firstName;
     protected String lastName;
@@ -23,13 +26,21 @@ public class Client_dto implements Serializable{
     public Client_dto() {
     }
 
-    //Jeszcze jedne konstruktor????
-    
-    public ShoppingBasket_dto getShoppingBasket() {
+    public Client_dto(ShoppingBasket shoppingBasket, String id, String firstName, String lastName, String adress, String phone, String email) {
+        this.shoppingBasket = shoppingBasket;
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.adress = adress;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    public ShoppingBasket getShoppingBasket() {
         return shoppingBasket;
     }
 
-    public void setShoppingBasket(ShoppingBasket_dto shoppingBasket) {
+    public void setShoppingBasket(ShoppingBasket shoppingBasket) {
         this.shoppingBasket = shoppingBasket;
     }
 
@@ -81,5 +92,8 @@ public class Client_dto implements Serializable{
         this.email = email;
     }
     
-    
+    @Override
+    public String toString() {
+        return firstName + " " + lastName + " " + email;
+    }
 }

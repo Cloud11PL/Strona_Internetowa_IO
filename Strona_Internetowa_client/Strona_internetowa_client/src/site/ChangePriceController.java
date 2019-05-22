@@ -10,9 +10,10 @@
  */
 package site;
 
-import bussineslogic.model.Category;
-import bussineslogic.model.Gender;
-import bussineslogic.model.Product;
+import client_tier.Client;
+import bussineslogic.dto.Category_dto;
+import bussineslogic.dto.Gender_dto;
+import bussineslogic.dto.Product_dto;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,7 +29,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -48,35 +48,35 @@ public class ChangePriceController implements Initializable {
     private Button btnGoBack;
 
     @FXML
-    private TableColumn<Product, String> clmName;
+    private TableColumn<Product_dto, String> clmName;
 
     @FXML
-    private TableColumn<Product, Double>clmPrice;
+    private TableColumn<Product_dto, Double>clmPrice;
 
     @FXML
-    private TableColumn<Product, Category> clmCategory;
+    private TableColumn<Product_dto, Category_dto> clmCategory;
 
     @FXML
-    private TableColumn<Product, Gender> clmGender;
+    private TableColumn<Product_dto, Gender_dto> clmGender;
 
     @FXML
-    private TableColumn<Product, String> clmSize;
+    private TableColumn<Product_dto, String> clmSize;
 
     @FXML
-    private TableColumn<Product, String> clmBrand;
+    private TableColumn<Product_dto, String> clmBrand;
 
     @FXML
     private TextField txtNewPrice;
     
     @FXML
-    private TableView<Product> tblProduct;
+    private TableView<Product_dto> tblProduct;
 
     @FXML
     void btnChangePriceClicked(ActionEvent event) {
         Double price=content_validate(txtNewPrice);
         String [] productTable=getProduct();
         if(price!=null || productTable!=null){
-        ClientTier.getFacade().modifyProductPrice(price, productTable);
+        Client.getFacade().modifyProductPrice(price, productTable);
         refresh_table();
         Alert alert = new Alert(AlertType.INFORMATION, "Cena została poprawnie zmieniona");
         alert.showAndWait();
@@ -92,12 +92,12 @@ public class ChangePriceController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        clmName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
-        clmPrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("price"));
-        clmCategory.setCellValueFactory(new PropertyValueFactory<Product, Category>("category"));
-        clmGender.setCellValueFactory(new PropertyValueFactory<Product, Gender>("gender"));
-        clmSize.setCellValueFactory(new PropertyValueFactory<Product, String>("size"));
-        clmBrand.setCellValueFactory(new PropertyValueFactory<Product, String>("brand"));
+        clmName.setCellValueFactory(new PropertyValueFactory<Product_dto, String>("name"));
+        clmPrice.setCellValueFactory(new PropertyValueFactory<Product_dto, Double>("price"));
+        clmCategory.setCellValueFactory(new PropertyValueFactory<Product_dto, Category_dto>("category"));
+        clmGender.setCellValueFactory(new PropertyValueFactory<Product_dto, Gender_dto>("gender"));
+        clmSize.setCellValueFactory(new PropertyValueFactory<Product_dto, String>("size"));
+        clmBrand.setCellValueFactory(new PropertyValueFactory<Product_dto, String>("brand"));
         tblProduct.getColumns().clear();
         tblProduct.getColumns().addAll(clmName,clmPrice,clmCategory,clmGender,clmSize,clmBrand);
         refresh_table();
@@ -105,7 +105,7 @@ public class ChangePriceController implements Initializable {
 
     private void refresh_table() {
         tblProduct.getItems().removeAll(tblProduct.getItems());
-        ObservableList<Product> data = FXCollections.observableArrayList(ClientTier.getFacade().getProductList());
+        ObservableList<Product_dto> data = FXCollections.observableArrayList(Client.getFacade().getProducts());
         tblProduct.setItems(data);
     }
     
@@ -121,7 +121,7 @@ public class ChangePriceController implements Initializable {
         return i;
     }
    private String[] getProduct() {
-        Product product=tblProduct.getSelectionModel().getSelectedItem();
+        Product_dto product=tblProduct.getSelectionModel().getSelectedItem();
         if(product!=null){
         String[] productTable = new String[]{product.getName(), String.valueOf(product.getPrice()), product.getCategory().name(), product.getGender().name(), product.getSize(), product.getBrand()};
         return productTable;
