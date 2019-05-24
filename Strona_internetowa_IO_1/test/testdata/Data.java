@@ -18,18 +18,18 @@ public class Data {
     
     public String productString[][] = {
       {"Koszulka biała", "139.99", "T_SHIRTS", "MAN", "M", "Levis"},
-        {"Spodnie czarne", "259.47", "JEANS", "MAN", "M", "HM"},
-        {"Skarpetki w renifery","23.99","SOCKS","UNISEX","42-45","HM"},
-        {"Kurtka puchowa, niebieska","145.89","COATS","WOMAN","M","Hilfiger Denim"},
-        {"Bluza z kapturem","45,23","SWEATHSHIRTS","MAN","L","HM"},
-        {"Bluza z kapturem","45.23","SWEATS","MAN","L","HM"}
+        {"Spodnie czarne", "259.47", "JEANS", "MAN", "M", "Zara"},
+        {"Skarpetki w renifery","23.99","SOCKS","UNISEX","42-45","Beneton"},
+        {"Kurtka puchowa, niebieska","145.89","COATS","WOMAN","XL","Hilfiger Denim"},
+        {"Bluza z kapturem","45,23","SWEATHSHIRTS","MAN","L","Niek"},
+        {"Bluza z kapturem","45.23","SWEATS","MAN","L","Nike"}
     };
     
     public Product productData[] = {
         new Product("Koszulka biała", 139.99, Category.T_SHIRTS, Gender.MAN, "M", "Levis"),
-        new Product("Spodnie czarne", 259.47, Category.JEANS, Gender.MAN, "M", "HM"),
-        new Product("Skarpetki w renifery",23.99,Category.SOCKS,Gender.UNISEX,"42-45","HM"),
-        new Product("Kurtka puchowa, niebieska",145.89,Category.COATS,Gender.WOMAN,"M","Hilfiger Denim")
+        new Product("Spodnie czarne", 259.47, Category.JEANS, Gender.MAN, "M", "Zara"),
+        new Product("Skarpetki w renifery",23.99,Category.SOCKS,Gender.UNISEX,"42-45","Beneton"),
+        new Product("Kurtka puchowa, niebieska",145.89,Category.COATS,Gender.WOMAN,"XL","Hilfiger Denim")
 
     };
     
@@ -47,5 +47,11 @@ public class Data {
         new Client("4", "Maria", "Bednarz", "Gdynia, Długa 11", "223456789", "mb@wp.pl")
     };
     
+    public String filters[][] = {
+        {"", "", "T_SHIRTS", "", "", "",""},
+        {"", "", "", "", "", "Zara",""},
+        {"", "", "", "", "", "","Skarpetki w renifery"},
+        {"", "", "", "", "XL", "",""},
+    };
     
 }
