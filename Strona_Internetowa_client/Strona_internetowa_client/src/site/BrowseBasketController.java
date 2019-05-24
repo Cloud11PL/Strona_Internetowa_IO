@@ -9,15 +9,15 @@
  */
 package site;
 
-import bussineslogic.model.Category;
-import bussineslogic.model.Client;
-import bussineslogic.model.Gender;
-import bussineslogic.model.Product;
+import client_tier.Client;
+import bussineslogic.dto.Category_dto;
+import bussineslogic.dto.Client_dto;
+import bussineslogic.dto.Gender_dto;
+import bussineslogic.dto.Product_dto;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -29,7 +29,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -38,11 +37,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 public class BrowseBasketController implements Initializable {
 
-    Client client;
+    Client_dto client;
 
     @FXML
     private Pane pane;
@@ -54,22 +52,22 @@ public class BrowseBasketController implements Initializable {
     private Button btnGoBack;
 
     @FXML
-    private TableColumn<Product, String> clmName;
+    private TableColumn<Product_dto, String> clmName;
 
     @FXML
-    private TableColumn<Product, Double> clmPrice;
+    private TableColumn<Product_dto, Double> clmPrice;
 
     @FXML
-    private TableColumn<Product, Category> clmCategory;
+    private TableColumn<Product_dto, Category_dto> clmCategory;
 
     @FXML
-    private TableColumn<Product, Gender> clmGender;
+    private TableColumn<Product_dto, Gender_dto> clmGender;
 
     @FXML
-    private TableColumn<Product, String> clmSize;
+    private TableColumn<Product_dto, String> clmSize;
 
     @FXML
-    private TableColumn<Product, String> clmBrand;
+    private TableColumn<Product_dto, String> clmBrand;
 
     @FXML
     private TextField txtName;
@@ -87,16 +85,16 @@ public class BrowseBasketController implements Initializable {
     private TextField txtBrand;
 
     @FXML
-    private ComboBox<Category> cboxCategory;
+    private ComboBox<Category_dto> cboxCategory;
 
     @FXML
-    private ComboBox<Gender> cboxGender;
+    private ComboBox<Gender_dto> cboxGender;
 
     @FXML
-    private ComboBox<Client> cboxClient;
+    private ComboBox<Client_dto> cboxClient;
 
     @FXML
-    private TableView<Product> tblBasket;
+    private TableView<Product_dto> tblBasket;
     
     @FXML
     private Button btnClearFilters;
@@ -109,7 +107,8 @@ public class BrowseBasketController implements Initializable {
             if (data == null) {
                 return;
             }
-            ClientTier.getFacade().browseBasket(clientData, data);
+            System.out.println(client.getShoppingBasket());
+            Client.getFacade().browseBasket(clientData, data);
             refresh_table();
         }
     }
@@ -135,23 +134,23 @@ public class BrowseBasketController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cboxCategory.getItems().setAll(Category.values());
-        cboxGender.getItems().setAll(Gender.values());
-        ObservableList<Client> options = FXCollections.observableArrayList(ClientTier.getFacade().getClientList());
+        cboxCategory.getItems().setAll(Category_dto.values());
+        cboxGender.getItems().setAll(Gender_dto.values());
+        ObservableList<Client_dto> options = FXCollections.observableArrayList(Client.getFacade().getClients());
         cboxClient.getItems().setAll(options);
-        clmName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
-        clmPrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("price"));
-        clmCategory.setCellValueFactory(new PropertyValueFactory<Product, Category>("category"));
-        clmGender.setCellValueFactory(new PropertyValueFactory<Product, Gender>("gender"));
-        clmSize.setCellValueFactory(new PropertyValueFactory<Product, String>("size"));
-        clmBrand.setCellValueFactory(new PropertyValueFactory<Product, String>("brand"));
+        clmName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        clmPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        clmCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
+        clmGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        clmSize.setCellValueFactory(new PropertyValueFactory<>("size"));
+        clmBrand.setCellValueFactory(new PropertyValueFactory<>("brand"));
 
         tblBasket.getColumns().clear();
         tblBasket.getColumns().addAll(clmName, clmPrice, clmCategory, clmGender, clmSize, clmBrand);
         
-        cboxClient.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Client>() {
+        cboxClient.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Client_dto>() {
             @Override
-            public void changed(ObservableValue<? extends Client> ov, Client t, Client t1) {
+            public void changed(ObservableValue<? extends Client_dto> ov, Client_dto t, Client_dto t1) {
                 tblBasket.getItems().clear();
             }
         });
@@ -186,21 +185,19 @@ public class BrowseBasketController implements Initializable {
     }
 
     public void refresh_table() {
-        ArrayList<Product> list = make_productlist_filtered();
+        ArrayList<Product_dto> list = make_productlist_filtered(getClient(),form_filters());
+        System.out.println("lis"+list);
         if (list.isEmpty()) {
             tblBasket.getItems().clear();
         }else{
-            ObservableList<Product> data = FXCollections.observableArrayList(list);
+            ObservableList<Product_dto> data = FXCollections.observableArrayList(list);
+            System.out.println("data"+data);
             tblBasket.setItems(data);
         }
     }
 
-    public ArrayList<Product> make_productlist_filtered() {
-        ArrayList<Product> productList = new ArrayList<>();
-        for (Product p : client.getShoppingBasket().getFilteredMap().keySet()) {
-            productList.add(p);
-        }
-        return productList;
+    public ArrayList<Product_dto> make_productlist_filtered(String [] clientTable,String [] filters) {
+        return Client.getFacade().getFilteredBasket(clientTable,filters);
     }
 
     private String[] getClient() {

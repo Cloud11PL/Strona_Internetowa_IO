@@ -10,11 +10,8 @@
  */
 package site;
 
-import bussineslogic.model.Category;
-import bussineslogic.model.Gender;
+import client_tier.Client;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -63,8 +60,7 @@ public class AddClientController{
         if (data == null) {
             return;
         }
-        
-        ClientTier.getFacade().addClient(data);
+        Client.getFacade().addClient(data);
         clearAllFields();
         Alert alert = new Alert(AlertType.INFORMATION, "Klient został poprawnie dodany");
         alert.showAndWait();

@@ -9,8 +9,9 @@
  */
 package site;
 
-import bussineslogic.model.Category;
-import bussineslogic.model.Gender;
+import bussineslogic.dto.Category_dto;
+import bussineslogic.dto.Gender_dto;
+import client_tier.Client;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -53,10 +54,10 @@ public class AddProductController implements Initializable {
     private TextField txtBrand;
 
     @FXML
-    private ComboBox<Category> cboxCategory;
+    private ComboBox<Category_dto> cboxCategory;
 
     @FXML
-    private ComboBox<Gender> cboxGender;
+    private ComboBox<Gender_dto> cboxGender;
 
     @FXML
     void btnAddProductClicked(ActionEvent event) {
@@ -64,7 +65,7 @@ public class AddProductController implements Initializable {
         if (data == null) {
             return;
         }
-        ClientTier.getFacade().addProduct(data);
+        Client.getFacade().addProduct(data);
         clearAllFields();
         Alert alert = new Alert(AlertType.INFORMATION, "Produkt został poprawnie dodany");
         alert.showAndWait();
@@ -150,8 +151,8 @@ public class AddProductController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cboxCategory.getItems().setAll(Category.values());
-        cboxGender.getItems().setAll(Gender.values());
+        cboxCategory.getItems().setAll(Category_dto.values());
+        cboxGender.getItems().setAll(Gender_dto.values());
     }
 
 }

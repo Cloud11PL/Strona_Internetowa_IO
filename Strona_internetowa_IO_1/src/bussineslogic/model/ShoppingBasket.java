@@ -1,6 +1,5 @@
 package bussineslogic.model;
 
-import bussineslogic.model.Product;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,7 +64,7 @@ public class ShoppingBasket {
     }
 
     public String browseBasket(String[] filters) {
-
+        filteredMap=new HashMap<>();
         for (Product p : productMap.keySet()) {
             if (p.isValid(filters) != null) {
              filteredMap.put(p, productMap.get(p));
