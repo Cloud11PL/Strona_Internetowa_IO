@@ -18,9 +18,6 @@ public class ShoppingBasket {
     }
 
     public double getTotalPrice() {
-        for (Product p : productMap.keySet()) {
-            totalPrice += p.getPrice() * productMap.get(p);
-        }
         return totalPrice;
     }
 
