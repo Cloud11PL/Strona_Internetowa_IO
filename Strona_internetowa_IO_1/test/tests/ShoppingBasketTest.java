@@ -5,13 +5,15 @@ import bussineslogic.model.Product;
 import categories.Test_Entity;
 import java.util.HashMap;
 import java.util.Map;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -55,11 +57,10 @@ public class ShoppingBasketTest {
         System.out.println("browseBasket");
         for (int i = 0; i< data.filters.length; i++){
             client.browseShoppingBasket(data.filters[i]);
-            assertNotEquals(client.getShoppingBasket().getFilteredMap(), client.getShoppingBasket().getProductMap());
+            assertNotEquals(client.getShoppingBasket().getFilteredMap(), productMap);
             Map<Product, Integer> checkMap = new HashMap();
             checkMap.put(data.productData[i], 1);
-            //assertSame(client.getShoppingBasket().getFilteredMap(),checkMap);
-            //assertThat(client.getShoppingBasket().getFilteredMap(), is(checkMap));
+            assertThat(client.getShoppingBasket().getFilteredMap(), is(checkMap));
         }        
     }
     

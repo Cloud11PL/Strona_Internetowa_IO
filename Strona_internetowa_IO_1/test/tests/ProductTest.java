@@ -5,7 +5,6 @@
  */
 package tests;
 
-import bussineslogic.model.Client;
 import bussineslogic.model.Product;
 import categories.Test_Entity;
 import java.util.Arrays;

@@ -66,9 +66,6 @@ public class ShoppingBasket {
             if (p.isValid(filters) != null) {
              filteredMap.put(p, productMap.get(p));
             }
-            else{
-                filteredMap.clear();
-            }
         }
 
         return "ShoppingBasket{"
