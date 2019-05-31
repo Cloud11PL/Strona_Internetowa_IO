@@ -76,7 +76,6 @@ public class Facade {
     }
 
     public void modifyProductPrice(double price, String[] productTable) {
-        
         Product productExist, product;
         Factory factory = new Factory();
         product = factory.createProduct(productTable);
