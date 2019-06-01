@@ -7,7 +7,6 @@ package tests;
 
 import bussineslogic.model.Client;
 import categories.Test_Entity;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import org.junit.BeforeClass;

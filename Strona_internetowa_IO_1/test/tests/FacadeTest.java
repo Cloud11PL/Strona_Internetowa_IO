@@ -6,9 +6,15 @@
 package tests;
 
 import bussineslogic.Facade;
+import bussineslogic.dto.Client_dto;
+import bussineslogic.dto.Product_dto;
 import bussineslogic.model.Client;
 import bussineslogic.model.Product;
 import categories.Test_Control;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -55,6 +61,7 @@ public class FacadeTest {
         
         productStr = facade.addProduct(data.productString[2]);
         assertTrue(productStr.equals(data.productData[2].toString()));
+        
     }
     
     @Test
@@ -111,10 +118,93 @@ public class FacadeTest {
         message = facade.addProductToBasket(data.clientString[0], data.productString[2]);
         assertTrue(message.equals("Dodano: " + data.productData[2].getName()));
         
+        message = facade.addProductToBasket(data.clientString[0], data.productString[6]);
+        assertTrue(message.equals("Dodano: " + data.productData[4].getName()));
+        
         message = facade.addProductToBasket(data.clientString[0], data.productString[0]);
         assertTrue(message.equals("Nie istnieje taki produkt"));
         
         message = facade.addProductToBasket(data.clientString[3], data.productString[2]);
         assertTrue(message.equals("Nie istnieje taki klient"));
     }
+    
+    @Test
+    public void test8BrowseBasket(){
+        System.out.println("browseBasket");
+        String message;
+        
+        message = facade.browseBasket(data.clientString[0], data.filters[2]);
+        assertTrue(message.equals("ShoppingBasket{"
+                + "productMap=" + data.clientData[0].getShoppingBasket().getFilteredMap() + "}"));
+        
+        message = facade.browseBasket(data.clientString[3], data.productString[4]);
+        assertNull(message);
+    }
+    
+    @Test
+    public void test9RemoveFromBasket(){
+        System.out.println("removeFromBasket");
+        String message;
+        
+        message = facade.removeFromBasket(data.clientString[0], data.productString[2]);
+        assertTrue(message.equals("Usunięto: "+ data.productData[2].getName() + " z koszyka"));
+        
+        message = facade.removeFromBasket(data.clientString[3], data.productString[2]);
+        assertTrue(message.equals("Nie istnieje taki klient"));
+    }
+    
+    @Test
+    public void test_10PublicProductsModel(){
+        System.out.println("publicProductsModel");
+        ArrayList<String> productsStr = facade.publicProductsModel();
+        
+        assertEquals(Arrays.asList(data.productsModel),productsStr);
+    }
+    
+    @Test
+    public void test_11RemoveProduct_dto(){
+        System.out.println("removeProduct_dto");
+        facade.removeProduct_dto(data.productDtoData[2]);
+        assertFalse(facade.getProductList().contains(data.productData[2]));
+    }
+    
+    @Test
+    public void test_12GetBasket(){
+        System.out.println("getBasket");
+        ArrayList<Product_dto> products = new ArrayList<>();
+        products.add(data.productDtoData[4]);
+        
+        ArrayList<Product_dto> basket = facade.getBasket(data.clientString[0]);
+        
+        assertEquals(products.toString(), basket.toString());
+    }
+    
+    @Test
+    public void test_13GetProducts(){
+        System.out.println("getProducts");
+        ArrayList<Product_dto> productsF = facade.getProducts();
+        
+        ArrayList<Product_dto> products = new ArrayList<>();
+        products.add(data.productDtoData[4]);
+        assertEquals(products.toString(), productsF.toString());
+    }
+    
+    @Test
+    public void test_14GetClients(){
+        System.out.println("getClients");
+        ArrayList<Client_dto> clients = facade.getClients();
+        
+        assertEquals(data.clientData[0].toString(), clients.get(0).toString());
+    }
+    
+    @Test
+    public void test_15GetFilteredBasket(){
+        System.out.println("getFilteredBasket");
+        ArrayList<Product_dto> products = facade.getFilteredBasket(data.clientString[0], data.filters[0]);
+        assertNotEquals(products.size(),0);
+        
+        products = facade.getFilteredBasket(data.clientString[1], data.filters[0]);
+        assertEquals(products.size(), 0);
+    }
+    
 }
