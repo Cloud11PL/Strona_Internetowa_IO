@@ -1,0 +1,5 @@
+!include Test_addClient
+!|tests_fitnesse_fixture.Test_searchClient|
+|number|clientdata|searchClient_?|data|result|
+|0|1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl|true|||
+|1|2,Adam,Nowak,Poznań,Krzywa 12,605123456,nowak.a@gmail.com|false|||

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20190508</FitNesseVersion>
+  <rootPath>FrontPage.WebsiteTests.Test_addClient</rootPath>
+  <result>
+    <counts>
+      <right>0</right>
+      <wrong>1</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <date>2019-06-01T22:23:28+02:00</date>
+    <runTimeInMillis>22</runTimeInMillis>
+    <content>&lt;div class="collapsible closed"&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='#' class='expandall'&gt;Expand&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='#' class='collapseall'&gt;Collapse&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+	&lt;p class="title"&gt;Included page: &lt;a href="FrontPage.WebsiteTests.SetUp"&gt;.FrontPage.WebsiteTests.SetUp&lt;/a&gt; &lt;a href="FrontPage.WebsiteTests.SetUp?edit&amp;amp;redirectToReferer=true&amp;amp;redirectAction=" class="edit"&gt;(edit)&lt;/a&gt;&lt;/p&gt;
+	&lt;div&gt;&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td&gt;tests_fitnesse_fixture.SetUp&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;br/&gt;&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td colspan="5"&gt;tests_fitnesse_fixture.Test_addClient&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;number&lt;/td&gt;
+		&lt;td&gt;dataclients&lt;/td&gt;
+		&lt;td&gt;addClient_?&lt;/td&gt;
+		&lt;td&gt;data&lt;/td&gt;
+		&lt;td&gt;result&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;0&lt;/td&gt;
+		&lt;td&gt;1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl&lt;/td&gt;
+		&lt;td class="fail"&gt;true &lt;span class="fit_label"&gt;expected&lt;/span&gt;&lt;hr&gt;false &lt;span class="fit_label"&gt;actual&lt;/span&gt;&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;1, Jan, Kowalski, Wroclaw1, 732456987, jan@wp.pl&lt;/span&gt;&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Jan Kowalski jan@wp.pl&lt;/span&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+</content>
+    <relativePageName>Test_addClient</relativePageName>
+  </result>
+  <executionLog>
+    <testSystem>fit:fit.FitServer</testSystem>
+    <command>java -cp "C:\Dev Projects\IO_Project\Strona_internetowa_IO_1\fitnesse\fitnesse-standalone.jar;C:\Dev Projects\IO_Project\WebsiteTests\build\classes" fit.FitServer Wojciech-DELL 53431 3863</command>
+    <exitCode>1</exitCode>
+    <stdOut></stdOut>
+    <stdErr></stdErr>
+  </executionLog>
+  <finalCounts>
+    <right>0</right>
+    <wrong>1</wrong>
+    <ignores>0</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>580</totalRunTimeInMillis>
+</testResults>
+

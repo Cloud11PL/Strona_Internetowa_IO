@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20190508</FitNesseVersion>
+  <rootPath>FrontPage.WebsiteTests.Test_searchClient</rootPath>
+  <result>
+    <counts>
+      <right>2</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>1</exceptions>
+    </counts>
+    <date>2019-06-02T02:26:31+02:00</date>
+    <runTimeInMillis>14</runTimeInMillis>
+    <content>&lt;div class="collapsible closed"&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='#' class='expandall'&gt;Expand&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='#' class='collapseall'&gt;Collapse&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+	&lt;p class="title"&gt;Included page: &lt;a href="FrontPage.WebsiteTests.SetUp"&gt;.FrontPage.WebsiteTests.SetUp&lt;/a&gt; &lt;a href="FrontPage.WebsiteTests.SetUp?edit&amp;amp;redirectToReferer=true&amp;amp;redirectAction=" class="edit"&gt;(edit)&lt;/a&gt;&lt;/p&gt;
+	&lt;div&gt;&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td&gt;tests_fitnesse_fixture.SetUp&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;br/&gt;&lt;div class="collapsible"&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='#' class='expandall'&gt;Expand&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='#' class='collapseall'&gt;Collapse&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+	&lt;p class="title"&gt;Included page: &lt;a href="FrontPage.WebsiteTests.Test_addClient"&gt;Test_addClient&lt;/a&gt; &lt;a href="FrontPage.WebsiteTests.Test_addClient?edit&amp;amp;redirectToReferer=true&amp;amp;redirectAction=" class="edit"&gt;(edit)&lt;/a&gt;&lt;/p&gt;
+	&lt;div&gt;&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td colspan="5"&gt;tests_fitnesse_fixture.Test_addClient&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;number&lt;/td&gt;
+		&lt;td&gt;dataclients&lt;/td&gt;
+		&lt;td&gt;addClient_?&lt;/td&gt;
+		&lt;td&gt;data&lt;/td&gt;
+		&lt;td&gt;result&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;0&lt;/td&gt;
+		&lt;td&gt;1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl&lt;/td&gt;
+		&lt;td class="pass"&gt;true&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Jan Kowalski jan@wp.pl&lt;/span&gt;&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Jan Kowalski jan@wp.pl&lt;/span&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td colspan="5"&gt;tests_fitnesse_fixture.Test_addProductToBasket&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;number&lt;/td&gt;
+		&lt;td&gt;clientdata&lt;/td&gt;
+		&lt;td&gt;addProductToBasket_?&lt;/td&gt;
+		&lt;td&gt;data&lt;/td&gt;
+		&lt;td&gt;result&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;0&lt;/td&gt;
+		&lt;td&gt;1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl&lt;/td&gt;
+		&lt;td class="error"&gt;true&lt;hr&gt;&lt;pre&gt;&lt;div class="fit_stacktrace"&gt;java.lang.NullPointerException
+	at bussineslogic.Factory.createProduct(Factory.java:14)
+	at bussineslogic.Facade.addProductToBasket(Facade.java:131)
+	at tests_fitnesse_fixture.Test_addProductToBasket.addProductToBasket_(Test_addProductToBasket.java:23)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at fit.TypeAdapter.invoke(TypeAdapter.java:108)
+	at fit.TypeAdapter.get(TypeAdapter.java:97)
+	at fit.Fixture$CellComparator.compareCellToResult(Fixture.java:374)
+	at fit.Fixture$CellComparator.access$100(Fixture.java:360)
+	at fit.Fixture.compareCellToResult(Fixture.java:302)
+	at fit.Fixture.check(Fixture.java:298)
+	at fit.ColumnFixture.check(ColumnFixture.java:45)
+	at fit.Binding$QueryBinding.doCell(Binding.java:224)
+	at fit.ColumnFixture.doCell(ColumnFixture.java:32)
+	at fit.Fixture.doCells(Fixture.java:174)
+	at fit.Fixture.doRow(Fixture.java:168)
+	at fit.ColumnFixture.doRow(ColumnFixture.java:21)
+	at fit.Fixture.doRows(Fixture.java:162)
+	at fit.ColumnFixture.doRows(ColumnFixture.java:13)
+	at fit.Fixture.doTable(Fixture.java:156)
+	at fit.Fixture.interpretFollowingTables(Fixture.java:121)
+	at fit.Fixture.interpretTables(Fixture.java:107)
+	at fit.Fixture.doTables(Fixture.java:81)
+	at fit.FitServer.process(FitServer.java:81)
+	at fit.FitServer.run(FitServer.java:56)
+	at fit.FitServer.main(FitServer.java:41)
+&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;null&lt;/span&gt;&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;null&lt;/span&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;1&lt;/td&gt;
+		&lt;td&gt;2,Adam,Nowak,Poznań, Krzywa 12,605123456,nowak.a@gmail.com&lt;/td&gt;
+		&lt;td class="pass"&gt;false&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Dodano: Spodnie czarne&lt;/span&gt;&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Nie istnieje taki klient&lt;/span&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+</content>
+    <relativePageName>Test_searchClient</relativePageName>
+  </result>
+  <executionLog>
+    <testSystem>fit:fit.FitServer</testSystem>
+    <command>java -cp "C:\Dev Projects\IO_Project\Strona_internetowa_IO_1\fitnesse\fitnesse-standalone.jar;C:\Dev Projects\IO_Project\WebsiteTests\build\classes" fit.FitServer Wojciech-DELL 58653 3863</command>
+    <exitCode>1</exitCode>
+    <stdOut></stdOut>
+    <stdErr></stdErr>
+  </executionLog>
+  <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>1</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>366</totalRunTimeInMillis>
+</testResults>
+

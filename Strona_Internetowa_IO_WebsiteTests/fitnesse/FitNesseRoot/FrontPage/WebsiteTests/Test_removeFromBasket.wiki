@@ -1,0 +1,4 @@
+!include Test_addProductToBasket
+!|tests_fitnesse_fixture.Test_removeFromBasket|
+|number|clientdata|productdata|removeFromBasket_?|data|result|
+|0|1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl|Koszulka biała,987.2,T_SHIRTS,MAN,M,Levis|true|||

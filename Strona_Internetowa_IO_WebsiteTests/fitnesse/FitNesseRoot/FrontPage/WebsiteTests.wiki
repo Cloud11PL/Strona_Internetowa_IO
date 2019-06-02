@@ -1,0 +1,8 @@
+---
+Suite
+---
+!1 Test suite X
+!contents -R2 -g -p -f -h
+
+Website - acceptance tests
+!path C:\Dev Projects\IO_Project\Strona_Internetowa_IO_WebsiteTests\build\classes

@@ -1,0 +1,3 @@
+!|tests_fitnesse_fixture.Test_addClient|
+|number|dataclients|addClient_?|data|result|
+|0|1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl|true|||

@@ -1,0 +1,8 @@
+!include Test_addClient
+!include Test_addProduct
+!|tests_fitnesse_fixture.Test_addProductToBasket|
+|number|clientdata|productdata|addProductToBasket_?|data|result|
+|0|1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl|Koszulka biała,987.2,T_SHIRTS,MAN,M,Levis|true|||
+|1|1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl|Spodnie czarne,259.47,JEANS,MAN,M,Zara|true|||
+|2|1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl|Skarpetki w renifery,23.99,SOCKS,UNISEX,42-45,Beneton|true|||
+|3|1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl|Kurtka puchowa niebieska,145.89,COATS,WOMAN,XL,Hilfiger Denim|true|||

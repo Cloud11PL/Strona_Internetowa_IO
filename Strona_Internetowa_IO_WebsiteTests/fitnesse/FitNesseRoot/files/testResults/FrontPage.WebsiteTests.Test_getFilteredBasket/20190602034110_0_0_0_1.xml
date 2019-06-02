@@ -1,0 +1,213 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20190508</FitNesseVersion>
+  <rootPath>FrontPage.WebsiteTests.Test_getFilteredBasket</rootPath>
+  <result>
+    <counts>
+      <right>9</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>3</exceptions>
+    </counts>
+    <date>2019-06-02T03:41:10+02:00</date>
+    <runTimeInMillis>21</runTimeInMillis>
+    <content>&lt;div class="collapsible closed"&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='#' class='expandall'&gt;Expand&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='#' class='collapseall'&gt;Collapse&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+	&lt;p class="title"&gt;Included page: &lt;a href="FrontPage.WebsiteTests.SetUp"&gt;.FrontPage.WebsiteTests.SetUp&lt;/a&gt; &lt;a href="FrontPage.WebsiteTests.SetUp?edit&amp;amp;redirectToReferer=true&amp;amp;redirectAction=" class="edit"&gt;(edit)&lt;/a&gt;&lt;/p&gt;
+	&lt;div&gt;&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td&gt;tests_fitnesse_fixture.SetUp&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;br/&gt;&lt;div class="collapsible"&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='#' class='expandall'&gt;Expand&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='#' class='collapseall'&gt;Collapse&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+	&lt;p class="title"&gt;Included page: &lt;a href="FrontPage.WebsiteTests.Test_addProductToBasket"&gt;Test_addProductToBasket&lt;/a&gt; &lt;a href="FrontPage.WebsiteTests.Test_addProductToBasket?edit&amp;amp;redirectToReferer=true&amp;amp;redirectAction=" class="edit"&gt;(edit)&lt;/a&gt;&lt;/p&gt;
+	&lt;div&gt;&lt;div class="collapsible"&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='#' class='expandall'&gt;Expand&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='#' class='collapseall'&gt;Collapse&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+	&lt;p class="title"&gt;Included page: &lt;a href="FrontPage.WebsiteTests.Test_addClient"&gt;Test_addClient&lt;/a&gt; &lt;a href="FrontPage.WebsiteTests.Test_addClient?edit&amp;amp;redirectToReferer=true&amp;amp;redirectAction=" class="edit"&gt;(edit)&lt;/a&gt;&lt;/p&gt;
+	&lt;div&gt;&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td colspan="5"&gt;tests_fitnesse_fixture.Test_addClient&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;number&lt;/td&gt;
+		&lt;td&gt;dataclients&lt;/td&gt;
+		&lt;td&gt;addClient_?&lt;/td&gt;
+		&lt;td&gt;data&lt;/td&gt;
+		&lt;td&gt;result&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;0&lt;/td&gt;
+		&lt;td&gt;1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl&lt;/td&gt;
+		&lt;td class="pass"&gt;true&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Jan Kowalski jan@wp.pl&lt;/span&gt;&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Jan Kowalski jan@wp.pl&lt;/span&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="collapsible"&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='#' class='expandall'&gt;Expand&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='#' class='collapseall'&gt;Collapse&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+	&lt;p class="title"&gt;Included page: &lt;a href="FrontPage.WebsiteTests.Test_addProduct"&gt;Test_addProduct&lt;/a&gt; &lt;a href="FrontPage.WebsiteTests.Test_addProduct?edit&amp;amp;redirectToReferer=true&amp;amp;redirectAction=" class="edit"&gt;(edit)&lt;/a&gt;&lt;/p&gt;
+	&lt;div&gt;&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td colspan="5"&gt;tests_fitnesse_fixture.Test_addProduct&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;number&lt;/td&gt;
+		&lt;td&gt;dataproducts&lt;/td&gt;
+		&lt;td&gt;addProduct_?&lt;/td&gt;
+		&lt;td&gt;data&lt;/td&gt;
+		&lt;td&gt;result&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;0&lt;/td&gt;
+		&lt;td&gt;Koszulka biała,987.2,T_SHIRTS,MAN,M,Levis&lt;/td&gt;
+		&lt;td class="pass"&gt;true&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Product{name='Koszulka biała', price=987.2, category=T_SHIRTS, gender=MAN, size='M', brand='Levis'}&lt;/span&gt;&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Product{name='Koszulka biała', price=987.2, category=T_SHIRTS, gender=MAN, size='M', brand='Levis'}&lt;/span&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;1&lt;/td&gt;
+		&lt;td&gt;Spodnie czarne,259.47,JEANS,MAN,M,Zara&lt;/td&gt;
+		&lt;td class="pass"&gt;true&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Product{name='Spodnie czarne', price=259.47, category=JEANS, gender=MAN, size='M', brand='Zara'}&lt;/span&gt;&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Product{name='Spodnie czarne', price=259.47, category=JEANS, gender=MAN, size='M', brand='Zara'}&lt;/span&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;2&lt;/td&gt;
+		&lt;td&gt;Skarpetki w renifery,23.99,SOCKS,UNISEX,42-45,Beneton&lt;/td&gt;
+		&lt;td class="pass"&gt;true&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Product{name='Skarpetki w renifery', price=23.99, category=SOCKS, gender=UNISEX, size='42-45', brand='Beneton'}&lt;/span&gt;&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Product{name='Skarpetki w renifery', price=23.99, category=SOCKS, gender=UNISEX, size='42-45', brand='Beneton'}&lt;/span&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;3&lt;/td&gt;
+		&lt;td&gt;Kurtka puchowa niebieska,145.89,COATS,WOMAN,XL,Hilfiger Denim&lt;/td&gt;
+		&lt;td class="pass"&gt;true&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Product{name='Kurtka puchowa niebieska', price=145.89, category=COATS, gender=WOMAN, size='XL', brand='Hilfiger Denim'}&lt;/span&gt;&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Product{name='Kurtka puchowa niebieska', price=145.89, category=COATS, gender=WOMAN, size='XL', brand='Hilfiger Denim'}&lt;/span&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td colspan="6"&gt;tests_fitnesse_fixture.Test_addProductToBasket&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;number&lt;/td&gt;
+		&lt;td&gt;clientdata&lt;/td&gt;
+		&lt;td&gt;productdata&lt;/td&gt;
+		&lt;td&gt;addProductToBasket_?&lt;/td&gt;
+		&lt;td&gt;data&lt;/td&gt;
+		&lt;td&gt;result&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;0&lt;/td&gt;
+		&lt;td&gt;1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl&lt;/td&gt;
+		&lt;td&gt;Koszulka biała,987.2,T_SHIRTS,MAN,M,Levis&lt;/td&gt;
+		&lt;td class="pass"&gt;true&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Dodano: Koszulka biała&lt;/span&gt;&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Dodano: Koszulka biała&lt;/span&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;1&lt;/td&gt;
+		&lt;td&gt;1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl&lt;/td&gt;
+		&lt;td&gt;Spodnie czarne,259.47,JEANS,MAN,M,Zara&lt;/td&gt;
+		&lt;td class="pass"&gt;true&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Dodano: Spodnie czarne&lt;/span&gt;&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Dodano: Spodnie czarne&lt;/span&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;2&lt;/td&gt;
+		&lt;td&gt;1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl&lt;/td&gt;
+		&lt;td&gt;Skarpetki w renifery,23.99,SOCKS,UNISEX,42-45,Beneton&lt;/td&gt;
+		&lt;td class="pass"&gt;true&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Dodano: Skarpetki w renifery&lt;/span&gt;&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Dodano: Skarpetki w renifery&lt;/span&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;3&lt;/td&gt;
+		&lt;td&gt;1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl&lt;/td&gt;
+		&lt;td&gt;Kurtka puchowa niebieska,145.89,COATS,WOMAN,XL,Hilfiger Denim&lt;/td&gt;
+		&lt;td class="pass"&gt;true&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Dodano: Kurtka puchowa niebieska&lt;/span&gt;&lt;/td&gt;
+		&lt;td&gt; &lt;span class="fit_grey"&gt;Dodano: Kurtka puchowa niebieska&lt;/span&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td colspan="6"&gt;tests_fitnesse_fixture.Test_getFilteredBasket&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;number&lt;/td&gt;
+		&lt;td&gt;clientdata&lt;/td&gt;
+		&lt;td&gt;filter&lt;/td&gt;
+		&lt;td&gt;getFilteredBasket_?&lt;/td&gt;
+		&lt;td&gt;data&lt;/td&gt;
+		&lt;td&gt;result&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;0&lt;/td&gt;
+		&lt;td&gt;1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl&lt;/td&gt;
+		&lt;td&gt;" , , , , , ,Skarpetki w renifery"&lt;/td&gt;
+		&lt;td class="error"&gt;true&lt;hr&gt;&lt;pre&gt;&lt;div class="fit_stacktrace"&gt;java.lang.NumberFormatException: For input string: """
+	at sun.misc.FloatingDecimal.readJavaFormatString(Unknown Source)
+	at sun.misc.FloatingDecimal.parseDouble(Unknown Source)
+	at java.lang.Double.parseDouble(Unknown Source)
+	at bussineslogic.model.Product.isValid(Product.java:81)
+	at bussineslogic.model.ShoppingBasket.browseBasket(ShoppingBasket.java:66)
+	at bussineslogic.model.Client.browseShoppingBasket(Client.java:89)
+	at bussineslogic.Facade.browseBasket(Facade.java:178)
+	at bussineslogic.Facade.getFilteredBasket(Facade.java:225)
+	at tests_fitnesse_fixture.Test_getFilteredBasket.getFilteredBasket_(Test_getFilteredBasket.java:26)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at fit.TypeAdapter.invoke(TypeAdapter.java:108)
+	at fit.TypeAdapter.get(TypeAdapter.java:97)
+	at fit.Fixture$CellComparator.compareCellToResult(Fixture.java:374)
+	at fit.Fixture$CellComparator.access$100(Fixture.java:360)
+	at fit.Fixture.compareCellToResult(Fixture.java:302)
+	at fit.Fixture.check(Fixture.java:298)
+	at fit.ColumnFixture.check(ColumnFixture.java:45)
+	at fit.Binding$QueryBinding.doCell(Binding.java:224)
+	at fit.ColumnFixture.doCell(ColumnFixture.java:32)
+	at fit.Fixture.doCells(Fixture.java:174)
+	at fit.Fixture.doRow(Fixture.java:168)
+	at fit.ColumnFixture.doRow(ColumnFixture.java:21)
+	at fit.Fixture.doRows(Fixture.java:162)
+	at fit.ColumnFixture.doRows(ColumnFixture.java:13)
+	at fit.Fixture.doTable(Fixture.java:156)
+	at fit.Fixture.interpretFollowingTables(Fixture.java:121)
+	at fit.Fixture.interpretTables(Fixture.java:107)
+	at fit.Fixture.doTables(Fixture.java:81)
+	at fit.FitServer.process(FitServer.java:81)
+	at fit.FitServer.run(FitServer.java:56)
+	at fit.FitServer.main(FitServer.java:41)
+&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;
+		&lt;td class="error"&gt; &lt;span class="fit_grey"&gt;null&lt;/span&gt;&lt;hr/&gt; &lt;span class="fit_label"&gt;Could not parse: null, expected type: java.util.ArrayList.&lt;/span&gt;&lt;/td&gt;
+		&lt;td class="error"&gt; &lt;span class="fit_grey"&gt;null&lt;/span&gt;&lt;hr/&gt; &lt;span class="fit_label"&gt;Could not parse: null, expected type: java.util.ArrayList.&lt;/span&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+</content>
+    <relativePageName>Test_getFilteredBasket</relativePageName>
+  </result>
+  <executionLog>
+    <testSystem>fit:fit.FitServer</testSystem>
+    <command>java -cp "C:\Dev Projects\IO_Project\Strona_internetowa_IO_1\fitnesse\fitnesse-standalone.jar;C:\Dev Projects\IO_Project\WebsiteTests\build\classes" fit.FitServer Wojciech-DELL 50840 3863</command>
+    <exitCode>3</exitCode>
+    <stdOut></stdOut>
+    <stdErr></stdErr>
+  </executionLog>
+  <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>1</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>366</totalRunTimeInMillis>
+</testResults>
+
