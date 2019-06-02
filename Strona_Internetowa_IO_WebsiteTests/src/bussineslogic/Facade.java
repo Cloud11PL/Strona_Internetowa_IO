@@ -217,7 +217,7 @@ public class Facade {
         this.clientList = clientList;
     }
 
-    public ArrayList<Product_dto> getFilteredBasket(String[] clientTable, String[] filters) {
+        public ArrayList<Product_dto> getFilteredBasket(String[] clientTable, String[] filters) {
         ArrayList<Product_dto> products = new ArrayList<>();
         Factory factory = new Factory();
         Client client, clientExist;

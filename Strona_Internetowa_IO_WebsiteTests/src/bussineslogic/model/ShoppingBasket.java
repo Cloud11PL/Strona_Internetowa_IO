@@ -38,16 +38,16 @@ public class ShoppingBasket {
         String message = "Brak takiego produktu w koszyku";
         Integer amountObject = productMap.get(product);
                     
-            if (amountObject !=null) {
-                int amount = amountObject;
-                if (amount > 1) {
-                    productMap.put(product, --amount);
-                    message = product.getName() + " ilość: " + amount;
-                } else {
-                    productMap.remove(product);
-                    message = "Usunięto: " + product.getName() + " z koszyka";
-                }
-                totalPrice-=product.getPrice();
+        if (amountObject != null) {
+            int amount = amountObject;
+            if (amount > 1) {
+                productMap.put(product, --amount);
+                message = product.getName() + " ilość: " + amount;
+            } else {
+                productMap.remove(product);
+                message = "Usunięto: " + product.getName() + " z koszyka";
+            }
+            totalPrice-=product.getPrice();
         }
         return message;
     }
