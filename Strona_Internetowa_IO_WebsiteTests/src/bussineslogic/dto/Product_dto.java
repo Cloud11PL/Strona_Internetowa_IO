@@ -6,13 +6,14 @@
 package bussineslogic.dto;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
  * @author Juju
  */
-public class Product_dto implements Serializable{
-    
+public class Product_dto implements Serializable {
+
     protected String name;
     protected double price;
     protected Category_dto category;
@@ -21,7 +22,7 @@ public class Product_dto implements Serializable{
     protected String brand;
 
     public Product_dto() {
-        
+
     }
 
     public Product_dto(String name, double price, Category_dto category, Gender_dto gender, String size, String brand) {
@@ -32,9 +33,7 @@ public class Product_dto implements Serializable{
         this.size = size;
         this.brand = brand;
     }
-    
-    
-    
+
     public String getName() {
         return name;
     }
@@ -82,7 +81,37 @@ public class Product_dto implements Serializable{
     public void setBrand(String brand) {
         this.brand = brand;
     }
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Product_dto other = (Product_dto) obj;
+        if (Double.doubleToLongBits(this.price) != Double.doubleToLongBits(other.price)) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.size, other.size)) {
+            return false;
+        }
+        if (!Objects.equals(this.brand, other.brand)) {
+            return false;
+        }
+        if (this.gender != other.gender) {
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
         return "Product{"
