@@ -30,7 +30,6 @@ public class ClientTest {
     public Client[] clientList;
 
     static Data data;
-    //Client clientT;
 
     @BeforeClass
     public static void setUpClass() {

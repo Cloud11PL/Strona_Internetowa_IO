@@ -31,12 +31,24 @@ public class Data {
         {"Koszulka biała", "987.2", "T_SHIRTS", "MAN", "M", "Levis"}
     };
     
+    public String productStringMod[][] = {
+        {},
+        {"Spodnie czarne", "987.2", "JEANS", "MAN", "M", "Zara"},
+        {"Kurtka puchowa, niebieska","145.89","COATS","WOMAN","XL","Hilfiger Denim"}
+    };
+    
     public Product productData[] = {
         new Product("Koszulka biała", 139.99, Category.T_SHIRTS, Gender.MAN, "M", "Levis"),
         new Product("Spodnie czarne", 259.47, Category.JEANS, Gender.MAN, "M", "Zara"),
         new Product("Skarpetki w renifery",23.99,Category.SOCKS,Gender.UNISEX,"42-45","Beneton"),
         new Product("Kurtka puchowa, niebieska",145.89,Category.COATS,Gender.WOMAN,"XL","Hilfiger Denim"),
-        new Product("Koszulka biała", 987.2, Category.T_SHIRTS, Gender.MAN, "M", "Levis")
+        //new Product("Koszulka biała", 987.2, Category.T_SHIRTS, Gender.MAN, "M", "Levis")
+    };
+    
+    public Product productData2[] = {
+        new Product("Spodnie czarne", 259.47, Category.JEANS, Gender.MAN, "M", "Zara"),
+        new Product("Spodnie czarne", 987.2, Category.JEANS, Gender.MAN, "M", "Zara"),
+        new Product("Kurtka puchowa, niebieska",145.89,Category.COATS,Gender.WOMAN,"XL","Hilfiger Denim")
     };
     
     public Product_dto productDtoData[] = {
@@ -45,6 +57,12 @@ public class Data {
         new Product_dto("Skarpetki w renifery",23.99, Category_dto.SOCKS, Gender_dto.UNISEX, "42-45","Beneton"),
         new Product_dto("Kurtka puchowa, niebieska",145.89, Category_dto.COATS, Gender_dto.WOMAN, "XL","Hilfiger Denim"),
         new Product_dto("Koszulka biała", 987.2, Category_dto.T_SHIRTS, Gender_dto.MAN, "M", "Levis")
+    };
+    
+    public Product_dto productDtoData2[] = {
+        new Product_dto("Spodnie czarne", 259.47, Category_dto.JEANS, Gender_dto.MAN, "M", "Zara"),
+        new Product_dto("Spodnie czarne", 987.2, Category_dto.JEANS, Gender_dto.MAN, "M", "Zara"),
+        new Product_dto("Kurtka puchowa, niebieska",145.89, Category_dto.COATS, Gender_dto.WOMAN, "XL","Hilfiger Denim")
     };
     
     public String clientString[][] = {
@@ -69,9 +87,16 @@ public class Data {
         {"", "", "", "", "XL", "",""},
     };
     
-    public String productsModel[] = {
-        "Product{name='Koszulka biała', price=987.2, category=T_SHIRTS, gender=MAN, size='M', brand='Levis'}", 
-        "Product{name='Skarpetki w renifery', price=23.99, category=SOCKS, gender=UNISEX, size='42-45', brand='Beneton'}"
+    public String filters2[][] = {
+        {"", "", "", "", "", "","Zara"},
+        {"", "", "JEANS", "", "", "",""},
+        {"", "", "", "", "", "XL",""}
+    };
+    
+    public String productsModel[][] = {
+        {"Product{name='Spodnie czarne', price=259.47, category=JEANS, gender=MAN, size='M', brand='Zara'}"},
+        {"Product{name='Spodnie czarne', price=987.2, category=JEANS, gender=MAN, size='M', brand='Zara'}"},
+        {"Product{name='Kurtka puchowa, niebieska', price=145.89, category=COATS, gender=WOMAN, size='XL', brand='Hilfiger Denim'}"}
     };
     
     
