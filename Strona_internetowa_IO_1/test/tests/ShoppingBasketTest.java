@@ -3,78 +3,94 @@ package tests;
 import bussineslogic.model.Client;
 import bussineslogic.model.Product;
 import categories.Test_Entity;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import static org.hamcrest.CoreMatchers.is;
+import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
+import org.junit.runners.Parameterized;
 import testdata.Data;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @Category(Test_Entity.class)
+@RunWith(Parameterized.class)
 public class ShoppingBasketTest {
     
     static Data data;
-    static Client client;
+    static Client client ;
     static Map productMap;
+    static double sum;
     
     @BeforeClass
     public static void setUpClass(){
+        System.out.println("LOL");
         data = new Data();
         client = data.clientData[0];
+        productMap = client.getShoppingBasket().getProductMap();
+        sum = 0;
+    }
+    
+    @Parameterized.Parameter
+    public int number1;
+    
+    @Parameterized.Parameters
+    public static Collection<Object[]> data(){
+        Object[][] data1 = new Object[][]{{0},{1},{2},{3}};
+        return Arrays.asList(data1);
     }
     
     @Test
     public void testAddProductToShoppingBasket() {
         System.out.println("addProductToShoppingBasket");
-        double sum = 0;
-        for (Product product : data.productData) {
-            sum += product.getPrice();
-            client.addToShoppingBasket(product);    
-            productMap = client.getShoppingBasket().getProductMap();
-            assertTrue(productMap.containsKey(product));
-            assertNotNull(productMap.get(product));
-            assertNotNull(client.getShoppingBasket().getTotalPrice());
-        }
+        Product product = data.productData[number1];
+        sum += product.getPrice();
         productMap = client.getShoppingBasket().getProductMap();
-        assertEquals(productMap.size(), 4);
+        client.addToShoppingBasket(product);  
+        productMap = client.getShoppingBasket().getProductMap();
+        assertTrue(productMap.containsKey(product));
+        assertNotNull(productMap.get(product));
+        assertNotNull(client.getShoppingBasket().getTotalPrice());
+        assertEquals(productMap.size(), number1+1);
         assertEquals(sum, client.getShoppingBasket().getTotalPrice(), 0.0001 );
     }
     
     @Test
     public void testBrowseBasket() {
         System.out.println("browseBasket");
-        for (int i = 0; i< data.filters.length; i++){
-            client.browseShoppingBasket(data.filters[i]);
-            assertNotEquals(client.getShoppingBasket().getFilteredMap(), productMap);
-            Map<Product, Integer> checkMap = new HashMap();
-            checkMap.put(data.productData[i], 1);
-            assertThat(client.getShoppingBasket().getFilteredMap(), is(checkMap));
-        }        
+        client.browseShoppingBasket(data.filters[number1]);
+        productMap = client.getShoppingBasket().getProductMap();
+        Map<Product, Integer> checkMap = new HashMap();
+        checkMap.put(data.productData[number1], 1);
+        assertThat(client.getShoppingBasket().getFilteredMap(), is(checkMap));       
     }
+    
+   
     
     @Test
     public void testRemoveProductFromShoppingBasket() {
         System.out.println("removeProductFromShoppingBasket");
-        for (Product product : data.productData) {
-            client.removeFromShoppingBasket(product);
-            productMap = client.getShoppingBasket().getProductMap();
-            assertFalse(productMap.containsKey(product));
-            assertNull(productMap.get(product));
-        }
+        Product product = data.productData[number1];
+        client.removeFromShoppingBasket(product);
         productMap = client.getShoppingBasket().getProductMap();
-        assertEquals(productMap.size(), 0);
+        assertFalse(productMap.containsKey(product));
+        assertNull(productMap.get(product));
+        assertEquals(productMap.size(), number1);
+        client.addToShoppingBasket(product);
+        productMap = client.getShoppingBasket().getProductMap();
     }
     
  }

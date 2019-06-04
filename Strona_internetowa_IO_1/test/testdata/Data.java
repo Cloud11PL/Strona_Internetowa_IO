@@ -98,6 +98,5 @@ public class Data {
         {"Product{name='Spodnie czarne', price=987.2, category=JEANS, gender=MAN, size='M', brand='Zara'}"},
         {"Product{name='Kurtka puchowa, niebieska', price=145.89, category=COATS, gender=WOMAN, size='XL', brand='Hilfiger Denim'}"}
     };
-    
-    
+        
 }
