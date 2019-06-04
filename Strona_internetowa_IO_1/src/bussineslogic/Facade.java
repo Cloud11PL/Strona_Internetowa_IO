@@ -73,6 +73,7 @@ public class Facade {
         return "Brak takiego produktu";
     }
 
+
     public Product modifyProductPrice(double price, String[] productTable) {
         Product productExist, product;
         Factory factory = new Factory();
@@ -83,6 +84,7 @@ public class Facade {
         return productExist;
     }
     
+
 
     public ArrayList<Product_dto> getBasket(String[] clientTable) {
         ArrayList<Product_dto> products = new ArrayList<>();
