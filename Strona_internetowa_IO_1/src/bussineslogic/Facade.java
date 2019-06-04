@@ -73,14 +73,18 @@ public class Facade {
         return "Brak takiego produktu";
     }
 
-    public void modifyProductPrice(double price, String[] productTable) {
+
+    public Product modifyProductPrice(double price, String[] productTable) {
         Product productExist, product;
         Factory factory = new Factory();
         product = factory.createProduct(productTable);
         if ((productExist = searchProduct(product)) != null) {
             productExist.setPrice(price);
         }
+        return productExist;
     }
+    
+
 
     public ArrayList<Product_dto> getBasket(String[] clientTable) {
         ArrayList<Product_dto> products = new ArrayList<>();

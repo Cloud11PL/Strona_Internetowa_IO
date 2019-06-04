@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Juju
@@ -51,7 +50,7 @@ public class ChangePriceController implements Initializable {
     private TableColumn<Product_dto, String> clmName;
 
     @FXML
-    private TableColumn<Product_dto, Double>clmPrice;
+    private TableColumn<Product_dto, Double> clmPrice;
 
     @FXML
     private TableColumn<Product_dto, Category_dto> clmCategory;
@@ -67,19 +66,21 @@ public class ChangePriceController implements Initializable {
 
     @FXML
     private TextField txtNewPrice;
-    
+
     @FXML
     private TableView<Product_dto> tblProduct;
+    
 
     @FXML
     void btnChangePriceClicked(ActionEvent event) {
-        Double price=content_validate(txtNewPrice);
-        String [] productTable=getProduct();
-        if(price!=null || productTable!=null){
-        ClientGUI.getFacade().modifyProductPrice(price, productTable);
-        refresh_table();
-        Alert alert = new Alert(AlertType.INFORMATION, "Cena została poprawnie zmieniona");
-        alert.showAndWait();
+        Double price = content_validate(txtNewPrice);
+        String[] productTable = getProduct();
+        if (price != null || productTable != null) {
+            ClientGUI.getFacade().changePrice(price, productTable);
+            refresh_table();
+            Alert alert = new Alert(AlertType.INFORMATION, "Cena została poprawnie zmieniona");
+            alert.showAndWait();
+
         }
     }
 
@@ -89,9 +90,9 @@ public class ChangePriceController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/Home.fxml"));
         stageTheEventSourceNodeBelongs.setScene(new Scene((Parent) loader.load()));
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         clmName.setCellValueFactory(new PropertyValueFactory<Product_dto, String>("name"));
         clmPrice.setCellValueFactory(new PropertyValueFactory<Product_dto, Double>("price"));
         clmCategory.setCellValueFactory(new PropertyValueFactory<Product_dto, Category_dto>("category"));
@@ -99,7 +100,7 @@ public class ChangePriceController implements Initializable {
         clmSize.setCellValueFactory(new PropertyValueFactory<Product_dto, String>("size"));
         clmBrand.setCellValueFactory(new PropertyValueFactory<Product_dto, String>("brand"));
         tblProduct.getColumns().clear();
-        tblProduct.getColumns().addAll(clmName,clmPrice,clmCategory,clmGender,clmSize,clmBrand);
+        tblProduct.getColumns().addAll(clmName, clmPrice, clmCategory, clmGender, clmSize, clmBrand);
         refresh_table();
     }
 
@@ -108,24 +109,25 @@ public class ChangePriceController implements Initializable {
         ObservableList<Product_dto> data = FXCollections.observableArrayList(ClientGUI.getFacade().getProducts());
         tblProduct.setItems(data);
     }
-    
-   public Double content_validate(TextField val) {
-       Double i=null;
-       try{
-        i=Double.parseDouble(val.getText().replace(",","."));
-        return i;
-        }catch(Exception ex){
+
+    public Double content_validate(TextField val) {
+        Double i = null;
+        try {
+            i = Double.parseDouble(val.getText().replace(",", "."));
+            return i;
+        } catch (Exception ex) {
             Alert alert = new Alert(AlertType.ERROR, "Należy podać poprawną cenę");
             alert.showAndWait();
         };
         return i;
     }
-   private String[] getProduct() {
-        Product_dto product=tblProduct.getSelectionModel().getSelectedItem();
-        if(product!=null){
-        String[] productTable = new String[]{product.getName(), String.valueOf(product.getPrice()), product.getCategory().name(), product.getGender().name(), product.getSize(), product.getBrand()};
-        return productTable;
-        }else{
+
+    private String[] getProduct() {
+        Product_dto product = tblProduct.getSelectionModel().getSelectedItem();
+        if (product != null) {
+            String[] productTable = new String[]{product.getName(), String.valueOf(product.getPrice()), product.getCategory().name(), product.getGender().name(), product.getSize(), product.getBrand()};
+            return productTable;
+        } else {
             Alert alert = new Alert(AlertType.ERROR, "Wybierz produkt z tabeli");
             alert.showAndWait();
             return null;
