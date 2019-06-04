@@ -1,0 +1,6 @@
+!|tests_fitnesse_fixture.Test_addProduct|
+|number|dataproducts|addProduct_?|data|result|
+|0|Koszulka biała,987.2,T_SHIRTS,MAN,M,Levis|true|||
+|1|Spodnie czarne,259.47,JEANS,MAN,M,Zara|true|||
+|2|Skarpetki w renifery,23.99,SOCKS,UNISEX,42-45,Beneton|true|||
+|3|Kurtka puchowa niebieska,145.89,COATS,WOMAN,XL,Hilfiger Denim|true|||

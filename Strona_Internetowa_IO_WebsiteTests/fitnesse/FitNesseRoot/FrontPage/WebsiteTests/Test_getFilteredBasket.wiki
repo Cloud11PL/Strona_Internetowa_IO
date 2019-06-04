@@ -1,0 +1,4 @@
+!include Test_addProductToBasket
+!|tests_fitnesse_fixture.Test_getFilteredBasket                                                                     |
+|number|clientdata                                 |filter                          |getFilteredBasket_?|data|result|
+|0     |1,Jan,Kowalski,Wroclaw1,732456987,jan@wp.pl|, , , , , , Skarpetki w renifery|true               |    |      |
