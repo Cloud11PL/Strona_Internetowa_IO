@@ -34,11 +34,16 @@ public class ClientGUI extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        initializeFacade();
     }
 
     public static void main(String[] args) {
         launch(args);
-        
+    }
+    
+    private void initializeFacade(){
+        getFacade().addProductList();
+        getFacade().addClientList();
     }
     
     

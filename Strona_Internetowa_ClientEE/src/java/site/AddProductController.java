@@ -69,6 +69,7 @@ public class AddProductController implements Initializable {
         clearAllFields();
         Alert alert = new Alert(AlertType.INFORMATION, "Produkt został poprawnie dodany");
         alert.showAndWait();
+        ClientGUI.getFacade().addProduct();
     }
 
     @FXML

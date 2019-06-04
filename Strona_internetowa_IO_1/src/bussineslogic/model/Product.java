@@ -1,16 +1,29 @@
 package bussineslogic.model;
-import bussineslogic.model.Category;
+import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
-public class Product {
-
+@Entity
+public class Product implements Serializable{
+private static final long serialVersionUID=1L;
     private String name;
     private double price;
+    @Enumerated(EnumType.STRING)  
     private Category category;
+    @Enumerated(EnumType.STRING)  
     private Gender gender;
     private String size;
     private String brand;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
     public Product(String name, double price, Category category, Gender gender, String size, String brand) {
         this.name = name;
         this.price = price;
@@ -21,6 +34,14 @@ public class Product {
     }
 
     public Product() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

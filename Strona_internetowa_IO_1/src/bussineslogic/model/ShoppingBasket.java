@@ -1,12 +1,25 @@
 package bussineslogic.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
-public class ShoppingBasket {
+@Entity
+public class ShoppingBasket implements Serializable{
+private static final long serialVersionUID=1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Transient
     private Map<Product, Integer> productMap = new HashMap<>();
     private double totalPrice = 0;
+    @Transient
     private Map<Product, Integer> filteredMap = new HashMap<>();
 
     public Map<Product, Integer> getProductMap() {
@@ -18,9 +31,6 @@ public class ShoppingBasket {
     }
 
     public double getTotalPrice() {
-        for (Product p : productMap.keySet()) {
-            totalPrice += p.getPrice() * productMap.get(p);
-        }
         return totalPrice;
     }
 
@@ -68,9 +78,6 @@ public class ShoppingBasket {
         for (Product p : productMap.keySet()) {
             if (p.isValid(filters) != null) {
              filteredMap.put(p, productMap.get(p));
-            }
-            else{
-                filteredMap.clear();
             }
         }
 

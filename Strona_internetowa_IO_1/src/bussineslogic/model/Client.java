@@ -1,16 +1,31 @@
 package bussineslogic.model;
-import java.util.Map;
+import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
-public class Client {
-
+@Entity
+public class Client implements Serializable{
+    
+    private static final long serialVersionUID=1L;
+    @Transient
     private ShoppingBasket shoppingBasket = new ShoppingBasket();
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ID_client;
+    
     private String id;
     private String firstName;
     private String lastName;
     private String adress;
     private String phone;
     private String email;
+    
+    
 
     public Client(String id, String firstName, String lastName, String adress, String phone, String email) {
         this.id = id;
@@ -20,6 +35,21 @@ public class Client {
         this.phone = phone;
         this.email = email;
     }
+
+    public Client() {
+    }
+    
+    
+
+    public Long getID() {
+        return ID_client;
+    }
+
+    public void setID(Long ID) {
+        this.ID_client = ID;
+    }
+    
+    
 
     public String getId() {
         return id;
@@ -89,6 +119,8 @@ public class Client {
         return shoppingBasket.browseBasket(filters);
     }
 
+    
+    
     @Override
     public String toString() {
         return firstName + " " + lastName + " " + email;

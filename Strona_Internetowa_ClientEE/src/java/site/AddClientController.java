@@ -12,6 +12,7 @@ package site;
 
 import client_tier.ClientGUI;
 import java.io.IOException;
+import java.util.Arrays;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,6 +55,7 @@ public class AddClientController{
     @FXML
     private TextField txtClientEmail;
 
+        
     @FXML
     void btnAddClientClicked(ActionEvent event) {
         String[] data = form_product();
@@ -103,8 +105,9 @@ public class AddClientController{
         }
         
         String data[] = {txtid.getText(),
-            txtClientFirstName.getText(), txtClientLastName.getText(),txtClientLastName.getText(), txtClientAdress.getText(),
-            txtClientPhoneNumber.getText(),txtClientEmail.getText()};
+            txtClientFirstName.getText(), txtClientLastName.getText(),txtClientAdress.getText(), txtClientPhoneNumber.getText(),
+            txtClientEmail.getText()};
+            System.out.println(Arrays.toString(data));
         return data;
     }
 
