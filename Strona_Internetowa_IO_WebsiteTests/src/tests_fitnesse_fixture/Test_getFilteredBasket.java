@@ -9,6 +9,7 @@ import bussineslogic.dto.Product_dto;
 import bussineslogic.model.Product;
 import fit.ColumnFixture;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -16,17 +17,20 @@ import java.util.ArrayList;
  */
 public class Test_getFilteredBasket extends ColumnFixture{
         
-    String clientdata[], filter[];
-    ArrayList<Product_dto> result, data;
+    String clientdata[], filter[], result, data;
+    ArrayList<Product_dto> filteredBasket, testingData;
     int number;
     
     
     public boolean getFilteredBasket_ () {
-        result = null;
-        result = SetUp.facade.getFilteredBasket(clientdata, filter);
-        data = new ArrayList();
-        data.add(SetUp.data.productDtoData[number]);
-        //Niespecjalnie wiem jak to zrobić.
-        return data.equals(result); 
+        filteredBasket = new ArrayList();
+        filteredBasket = SetUp.facade.getFilteredBasket(clientdata, filter);
+        testingData = new ArrayList();
+        data = SetUp.data.productDtoData[2].toString();
+        testingData.add(SetUp.data.productDtoData[2]);
+        result = filteredBasket.get(number).toString();
+        
+        return testingData.get(number).equals(filteredBasket.get(number));
+
     }
 }
