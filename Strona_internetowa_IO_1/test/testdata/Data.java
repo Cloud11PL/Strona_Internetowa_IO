@@ -89,12 +89,7 @@ public class Data {
         {"Product{name='Spodnie czarne', price=987.2, category=JEANS, gender=MAN, size='M', brand='Zara'}"},
         {"Product{name='Kurtka puchowa, niebieska', price=145.89, category=COATS, gender=WOMAN, size='XL', brand='Hilfiger Denim'}"}
     };
-    
-    Map<Product,Integer> map1 = new HashMap<>();
-    Map<Product,Integer> map2 = new HashMap<>();
-    Map<Product,Integer> map3 = new HashMap<>();
-    Map<Product,Integer> map4 = new HashMap<>();
-    
+   
     public Map baskets[] = {
       creteMap(productData[0]), 
       creteMap(productData[0], productData[1]), 
