@@ -5,16 +5,11 @@ import bussineslogic.model.Product;
 import categories.Test_Entity;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
-import static org.hamcrest.CoreMatchers.is;
-import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -37,7 +32,6 @@ public class ShoppingBasketTest {
     
     @BeforeClass
     public static void setUpClass(){
-        System.out.println("LOL");
         data = new Data();
         client = data.clientData[0];
         productMap = client.getShoppingBasket().getProductMap();
@@ -61,6 +55,7 @@ public class ShoppingBasketTest {
         productMap = client.getShoppingBasket().getProductMap();
         client.addToShoppingBasket(product);  
         productMap = client.getShoppingBasket().getProductMap();
+        assertEquals(productMap, data.baskets[number1]);
         assertTrue(productMap.containsKey(product));
         assertNotNull(productMap.get(product));
         assertNotNull(client.getShoppingBasket().getTotalPrice());
@@ -72,13 +67,8 @@ public class ShoppingBasketTest {
     public void testBrowseBasket() {
         System.out.println("browseBasket");
         client.browseShoppingBasket(data.filters[number1]);
-        productMap = client.getShoppingBasket().getProductMap();
-        Map<Product, Integer> checkMap = new HashMap();
-        checkMap.put(data.productData[number1], 1);
-        assertThat(client.getShoppingBasket().getFilteredMap(), is(checkMap));       
+        assertEquals(client.getShoppingBasket().getFilteredMap(), data.filtredBaskets[number1]);     
     }
-    
-   
     
     @Test
     public void testRemoveProductFromShoppingBasket() {
@@ -86,6 +76,7 @@ public class ShoppingBasketTest {
         Product product = data.productData[number1];
         client.removeFromShoppingBasket(product);
         productMap = client.getShoppingBasket().getProductMap();
+        assertEquals(productMap, data.reovedBaskets[number1]);
         assertFalse(productMap.containsKey(product));
         assertNull(productMap.get(product));
         assertEquals(productMap.size(), number1);

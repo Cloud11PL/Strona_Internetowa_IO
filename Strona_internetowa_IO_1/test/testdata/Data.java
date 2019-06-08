@@ -1,24 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package testdata;
 
 import bussineslogic.dto.Category_dto;
-import bussineslogic.dto.Client_dto;
 import bussineslogic.dto.Gender_dto;
 import bussineslogic.dto.Product_dto;
 import bussineslogic.model.Category;
 import bussineslogic.model.Client;
 import bussineslogic.model.Gender;
 import bussineslogic.model.Product;
-import bussineslogic.model.ShoppingBasket;
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- *
- * @author Piotr Janus
- */
 public class Data {
     
     public String productString[][] = {
@@ -98,5 +89,38 @@ public class Data {
         {"Product{name='Spodnie czarne', price=987.2, category=JEANS, gender=MAN, size='M', brand='Zara'}"},
         {"Product{name='Kurtka puchowa, niebieska', price=145.89, category=COATS, gender=WOMAN, size='XL', brand='Hilfiger Denim'}"}
     };
-        
+    
+    Map<Product,Integer> map1 = new HashMap<>();
+    Map<Product,Integer> map2 = new HashMap<>();
+    Map<Product,Integer> map3 = new HashMap<>();
+    Map<Product,Integer> map4 = new HashMap<>();
+    
+    public Map baskets[] = {
+      creteMap(productData[0]), 
+      creteMap(productData[0], productData[1]), 
+      creteMap(productData[0], productData[1], productData[2]), 
+      creteMap(productData[0], productData[1], productData[2], productData[3])
+    };
+    
+    public Map filtredBaskets[] = {
+      creteMap(productData[0]), 
+      creteMap(productData[1]), 
+      creteMap(productData[2]), 
+      creteMap(productData[3])
+    };
+    
+     public Map reovedBaskets[] = {
+      creteMap(), 
+      creteMap(productData[0]), 
+      creteMap(productData[0], productData[1]), 
+      creteMap(productData[0], productData[1], productData[2])
+    };
+
+    public Map<Product,Integer> creteMap(Product... products){
+        Map<Product,Integer> map = new HashMap<>();
+        for (Product p : products){
+            map.put(p, 1);
+        }
+        return map;
+    };
 }
