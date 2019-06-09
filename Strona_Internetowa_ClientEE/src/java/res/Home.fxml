@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="site.HomeController">
    <children>
-      <VBox alignment="CENTER" prefHeight="650.0" prefWidth="900.0" spacing="10.0">
+      <VBox alignment="CENTER" layoutX="14.0" layoutY="88.0" prefHeight="504.0" prefWidth="900.0" spacing="10.0">
          <children>
+            
             <Button fx:id="btnAddClient" mnemonicParsing="false" onAction="#btnAddClientClicked" prefHeight="34.0" prefWidth="348.0" text="Dodaj klienta">
                <font>
                   <Font name="Corbel" size="18.0" />
@@ -41,5 +44,7 @@
             </Button>
          </children>
       </VBox>
+      <Button fx:id="btnENG" layoutX="744.0" layoutY="24.0" mnemonicParsing="false" onAction="#btnENGSelected" prefHeight="25.0" prefWidth="48.0" text="ENG"/>
+      <Button fx:id="btnPL" layoutX="683.0" layoutY="24.0" mnemonicParsing="false" onAction="#btnPLSelected" prefHeight="25.0" prefWidth="48.0" text="PL"/>
    </children>
 </Pane>

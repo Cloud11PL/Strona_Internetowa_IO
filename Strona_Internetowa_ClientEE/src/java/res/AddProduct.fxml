@@ -40,35 +40,35 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Nazwa:">
+            <Label fx:id="nameLabel" text="Nazwa:">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="txtname" GridPane.rowIndex="1" />
-            <Label text="Cena:" GridPane.rowIndex="2">
+            <Label fx:id="priceLabel" text="Cena:" GridPane.rowIndex="2">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="txtPrice" GridPane.rowIndex="3" />
-            <Label text="Kategoria:" GridPane.rowIndex="4">
+            <Label fx:id="categoryLabel" text="Kategoria:" GridPane.rowIndex="4">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>
             </Label>
-            <Label text="Płeć:" GridPane.rowIndex="6">
+            <Label fx:id="genderLabel" text="Płeć:" GridPane.rowIndex="6">
                <font>
                   <Font name="Times New Roman" size="19.0" />
                </font>
             </Label>
-            <Label text="Rozmiar:" GridPane.rowIndex="8">
+            <Label fx:id="sizeLabel" text="Rozmiar:" GridPane.rowIndex="8">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="txtSize" GridPane.rowIndex="9" />
-            <Label text="Marka:" GridPane.rowIndex="10">
+            <Label fx:id="brandLabel" text="Marka:" GridPane.rowIndex="10">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>

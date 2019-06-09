@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author Juju
@@ -37,6 +32,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import site.locale.LocaleService;
 
 public class BrowseBasketController implements Initializable {
 
@@ -153,6 +149,14 @@ public class BrowseBasketController implements Initializable {
                 tblBasket.getItems().clear();
             }
         });
+        
+        /* clmName.setText(LocaleService.INSTANCE.getMessage("name"));
+        clmPrice.setText(LocaleService.INSTANCE.getMessage("price"));
+        clmCategory.setText(LocaleService.INSTANCE.getMessage("category"));
+        clmGender.setText(LocaleService.INSTANCE.getMessage("gender"));
+        clmSize.setText(LocaleService.INSTANCE.getMessage("size"));
+        clmBrand.setText(LocaleService.INSTANCE.getMessage("brand"));
+        */
         
     }
 

@@ -12,21 +12,26 @@ package site;
 
 import client_tier.ClientGUI;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Arrays;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import site.locale.LocaleService;
 
-public class AddClientController{
+public class AddClientController implements Initializable{
 
     @FXML
     private Pane pane;
@@ -54,6 +59,24 @@ public class AddClientController{
 
     @FXML
     private TextField txtClientEmail;
+    
+    @FXML
+    private Label idLabel;
+    
+    @FXML
+    private Label firstNameLabel;
+    
+    @FXML
+    private Label lastNameLabel;
+ 
+    @FXML
+    private Label adressLabel;
+     
+    @FXML
+    private Label numerLabel;
+      
+    @FXML
+    private Label emailLabel;
 
         
     @FXML
@@ -64,7 +87,7 @@ public class AddClientController{
         }
         ClientGUI.getFacade().addClient(data);
         clearAllFields();
-        Alert alert = new Alert(AlertType.INFORMATION, "Klient został poprawnie dodany");
+        Alert alert = new Alert(AlertType.INFORMATION, LocaleService.INSTANCE.getMessage("clientAdded"));
         alert.showAndWait();
     }
     
@@ -114,7 +137,7 @@ public class AddClientController{
     public String content_validate(TextField val) {
         String s = val.getText();
         if (s.equals("")) {
-            Alert alert = new Alert(AlertType.ERROR, "Uzupełnij dane");
+            Alert alert = new Alert(AlertType.ERROR, LocaleService.INSTANCE.getMessage("dataError"));
             alert.showAndWait();
             return null;
         } else {
@@ -122,6 +145,18 @@ public class AddClientController{
             val.setText(s);
             return s;
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        btnAddClient.setText(LocaleService.INSTANCE.getMessage("addClient"));
+        btnGoBack.setText(LocaleService.INSTANCE.getMessage("goBack"));
+        idLabel.setText(LocaleService.INSTANCE.getMessage("id"));
+        adressLabel.setText(LocaleService.INSTANCE.getMessage("adress"));
+        emailLabel.setText(LocaleService.INSTANCE.getMessage("email"));
+        numerLabel.setText(LocaleService.INSTANCE.getMessage("phoneNumber"));
+        firstNameLabel.setText(LocaleService.INSTANCE.getMessage("firstName"));
+        lastNameLabel.setText(LocaleService.INSTANCE.getMessage("lastName"));
     }
 
 

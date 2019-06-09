@@ -26,9 +26,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import site.locale.LocaleService;
 
 public class AddProductController implements Initializable {
 
@@ -60,6 +62,24 @@ public class AddProductController implements Initializable {
     private ComboBox<Gender_dto> cboxGender;
 
     @FXML
+    private Label nameLabel;
+    
+    @FXML
+    private Label priceLabel;
+
+    @FXML
+    private Label categoryLabel;
+
+    @FXML
+    private Label genderLabel;
+
+    @FXML
+    private Label sizeLabel;
+
+    @FXML
+    private Label brandLabel;
+    
+    @FXML
     void btnAddProductClicked(ActionEvent event) {
         String[] data = form_product();
         if (data == null) {
@@ -67,7 +87,7 @@ public class AddProductController implements Initializable {
         }
         ClientGUI.getFacade().addProduct(data);
         clearAllFields();
-        Alert alert = new Alert(AlertType.INFORMATION, "Produkt został poprawnie dodany");
+        Alert alert = new Alert(AlertType.INFORMATION, LocaleService.INSTANCE.getMessage("productAdded"));
         alert.showAndWait();
         ClientGUI.getFacade().addProduct();
     }
@@ -118,7 +138,7 @@ public class AddProductController implements Initializable {
             return data;
 
         } catch (NumberFormatException ex) {
-            Alert alert = new Alert(AlertType.ERROR, "Cena musi być liczbą");
+            Alert alert = new Alert(AlertType.ERROR, LocaleService.INSTANCE.getMessage("priceError"));
             alert.showAndWait();
         }
 
@@ -128,7 +148,7 @@ public class AddProductController implements Initializable {
     public String content_validate(TextField val) {
         String s = val.getText();
         if (s.equals("")) {
-            Alert alert = new Alert(AlertType.ERROR, "Uzupełnij dane");
+            Alert alert = new Alert(AlertType.ERROR, LocaleService.INSTANCE.getMessage("dataError"));
             alert.showAndWait();
             return null;
         } else {
@@ -144,7 +164,7 @@ public class AddProductController implements Initializable {
             s = s.replaceAll(" ", "_");
             return s;
         } else {
-            Alert alert = new Alert(AlertType.ERROR, "Wybierz opcje z listy");
+            Alert alert = new Alert(AlertType.ERROR, LocaleService.INSTANCE.getMessage("chooseFromList"));
             alert.showAndWait();
             return null;
         }
@@ -154,6 +174,15 @@ public class AddProductController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         cboxCategory.getItems().setAll(Category_dto.values());
         cboxGender.getItems().setAll(Gender_dto.values());
+        btnAddProduct.setText(LocaleService.INSTANCE.getMessage("addProduct"));;
+        btnGoBack.setText(LocaleService.INSTANCE.getMessage("goBack"));;
+
+        brandLabel.setText(LocaleService.INSTANCE.getMessage("brand"));
+        priceLabel.setText(LocaleService.INSTANCE.getMessage("price"));
+        sizeLabel.setText(LocaleService.INSTANCE.getMessage("size"));
+        nameLabel.setText(LocaleService.INSTANCE.getMessage("name"));
+        categoryLabel.setText(LocaleService.INSTANCE.getMessage("category"));
+        genderLabel.setText(LocaleService.INSTANCE.getMessage("gender"));
     }
 
 }

@@ -39,37 +39,37 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="ID:">
+            <Label fx:id="idLabel" text="ID:">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="txtid" GridPane.rowIndex="1" />
-            <Label text="Imie:" GridPane.rowIndex="2">
+            <Label fx:id="firstNameLabel" text="Imie:" GridPane.rowIndex="2">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="txtClientFirstName" GridPane.rowIndex="3" />
-            <Label text="Nazwisko:" GridPane.rowIndex="4">
+            <Label fx:id="lastNameLabel" text="Nazwisko:" GridPane.rowIndex="4">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="txtClientLastName" GridPane.rowIndex="5" />
-            <Label text="Adres:" GridPane.rowIndex="6">
+            <Label fx:id="adressLabel" text="Adres:" GridPane.rowIndex="6">
                <font>
                   <Font name="Times New Roman" size="19.0" />
                </font>
             </Label>
             <TextField fx:id="txtClientAdress" GridPane.rowIndex="7" />
-            <Label text="Numer tel.:" GridPane.rowIndex="8">
+            <Label fx:id="numerLabel" text="Numer tel.:" GridPane.rowIndex="8">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="txtClientPhoneNumber" GridPane.rowIndex="9" />
-            <Label text="E-mail:" GridPane.rowIndex="10">
+            <Label fx:id="emailLabel" text="E-mail:" GridPane.rowIndex="10">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>

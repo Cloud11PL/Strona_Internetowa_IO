@@ -1,27 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package site;
 
 /**
  *
- * @author Juju
+ * @author Juju, Werka
  */
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import site.locale.Language;
+import site.locale.LocaleService;
 
-public class HomeController {
+public class HomeController implements Initializable {
 
     @FXML
     private Pane pane;
@@ -43,7 +43,27 @@ public class HomeController {
 
     @FXML
     private Button btnChangePrice;
+    
+    @FXML
+    private Button btnENG;
 
+    @FXML
+    private Button btnPL;
+   
+    
+    @FXML
+    void btnENGSelected(ActionEvent event) {
+        LocaleService.INSTANCE.setLanguage(Language.EN);
+        updateLabels();
+    }
+
+    @FXML
+    void btnPLSelected(ActionEvent event) {
+         LocaleService.INSTANCE.setLanguage(Language.PL);
+         updateLabels();
+    }
+
+    
     @FXML
     void btnAddClientClicked(ActionEvent event) throws IOException {
         Stage stageTheEventSourceNodeBelongs = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -86,5 +106,18 @@ public class HomeController {
         stageTheEventSourceNodeBelongs.setScene(new Scene((Parent) loader.load()));
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        updateLabels();
+    }
+    
+    public void updateLabels() {
+        btnAddClient.setText(LocaleService.INSTANCE.getMessage("addClient"));
+        btnBrowseBasket.setText(LocaleService.INSTANCE.getMessage("browseBasket"));
+        btnModifyBasket.setText(LocaleService.INSTANCE.getMessage("modifyBasket"));
+        btnAddProduct.setText(LocaleService.INSTANCE.getMessage("addProduct"));
+        btnRemoveProduct.setText(LocaleService.INSTANCE.getMessage("removeProduct"));
+        btnChangePrice.setText(LocaleService.INSTANCE.getMessage("chengeProductPrice"));
+    }
 
 }
