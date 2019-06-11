@@ -21,6 +21,5 @@ public class Test_addProduct extends ColumnFixture{
         result = SetUp.facade.addProduct(dataproducts);
         data = SetUp.data.productsModel[number];
         return data.equals(result);
-    }
-    
+    }   
 }

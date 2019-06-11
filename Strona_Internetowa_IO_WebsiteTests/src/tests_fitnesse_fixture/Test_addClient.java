@@ -20,7 +20,6 @@ public class Test_addClient extends ColumnFixture{
         result = null;
         result = SetUp.facade.addClient(dataclients);
         data = SetUp.data.clientData[number].toString();
-        //NIE WIEM CZY TAK MOGEM :( Idk czy będzie krzyczeć czy nie
         return data.equals(result);
     }
     

@@ -19,12 +19,8 @@ public class Test_addProductToBasket extends ColumnFixture{
     
     
     public boolean addProductToBasket_() {
-        try {
-            result = SetUp.facade.addProductToBasket(clientdata, productdata);
-            data = "Dodano: " + SetUp.data.productDtoData[number].getName();
-        } catch (IllegalFormatCodePointException e) {
-            return false;
-        }
+        result = SetUp.facade.addProductToBasket(clientdata, productdata);
+        data = "Dodano: " + SetUp.data.productDtoData[number].getName();
         return data.equals(result);
     }
 }
